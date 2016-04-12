@@ -66,32 +66,22 @@ class StubApiTest extends \PHPUnit_Framework_TestCase
 
     
     /**
-     * Test case for jobsJobIdDelete
+     * Test case for deleteJob
      *
      * Delete/unpost job and close it
      *
      */
-    public function test_jobsJobIdDelete() {
+    public function test_deleteJob() {
 
     }
     
     /**
-     * Test case for jobsJobIdGet
+     * Test case for getJob
      *
      * Retrieve job data and status
      *
      */
-    public function test_jobsJobIdGet() {
-
-    }
-    
-    /**
-     * Test case for jobsJobIdPatch
-     *
-     * Change job data without changing board selection
-     *
-     */
-    public function test_jobsJobIdPatch() {
+    public function test_getJob() {
 
     }
     
@@ -102,6 +92,16 @@ class StubApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function test_jobsJobIdPostingsPostingIdDelete() {
+
+    }
+    
+    /**
+     * Test case for updateJob
+     *
+     * Change job data without changing board selection
+     *
+     */
+    public function test_updateJob() {
 
     }
     

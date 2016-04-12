@@ -92,29 +92,113 @@ class DefaultApi
   
     
     /**
-     * boardsGet
+     * createDraft
+     *
+     * Create a job draft for posting to boards
+     *
+     * @param \Swagger\Client\Model\Draft $draft  (optional)
+     * @return void
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function createDraft($draft = null)
+    {
+        list($response, $statusCode, $httpHeader) = $this->createDraftWithHttpInfo ($draft);
+        return $response; 
+    }
+
+
+    /**
+     * createDraftWithHttpInfo
+     *
+     * Create a job draft for posting to boards
+     *
+     * @param \Swagger\Client\Model\Draft $draft  (optional)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function createDraftWithHttpInfo($draft = null)
+    {
+        
+  
+        // parse inputs
+        $resourcePath = "/drafts";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
+  
+        
+        
+        
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // body params
+        $_tempBody = null;
+        if (isset($draft)) {
+            $_tempBody = $draft;
+        }
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'POST',
+                $queryParams, $httpBody,
+                $headerParams
+            );
+            
+            return array(null, $statusCode, $httpHeader);
+            
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            }
+  
+            throw $e;
+        }
+    }
+    
+    /**
+     * getBoards
      *
      * Returns boards available to post.
      *
      * @return \Swagger\Client\Model\BoardsList
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function boardsGet()
+    public function getBoards()
     {
-        list($response, $statusCode, $httpHeader) = $this->boardsGetWithHttpInfo ();
+        list($response, $statusCode, $httpHeader) = $this->getBoardsWithHttpInfo ();
         return $response; 
     }
 
 
     /**
-     * boardsGetWithHttpInfo
+     * getBoardsWithHttpInfo
      *
      * Returns boards available to post.
      *
      * @return Array of \Swagger\Client\Model\BoardsList, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function boardsGetWithHttpInfo()
+    public function getBoardsWithHttpInfo()
     {
         
   
@@ -178,7 +262,7 @@ class DefaultApi
     }
     
     /**
-     * draftsDraftIdGet
+     * getDraft
      *
      * Get Job Draft Dtaa
      *
@@ -186,15 +270,15 @@ class DefaultApi
      * @return \Swagger\Client\Model\Draft
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function draftsDraftIdGet($draft_id)
+    public function getDraft($draft_id)
     {
-        list($response, $statusCode, $httpHeader) = $this->draftsDraftIdGetWithHttpInfo ($draft_id);
+        list($response, $statusCode, $httpHeader) = $this->getDraftWithHttpInfo ($draft_id);
         return $response; 
     }
 
 
     /**
-     * draftsDraftIdGetWithHttpInfo
+     * getDraftWithHttpInfo
      *
      * Get Job Draft Dtaa
      *
@@ -202,12 +286,12 @@ class DefaultApi
      * @return Array of \Swagger\Client\Model\Draft, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function draftsDraftIdGetWithHttpInfo($draft_id)
+    public function getDraftWithHttpInfo($draft_id)
     {
         
         // verify the required parameter 'draft_id' is set
         if ($draft_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $draft_id when calling draftsDraftIdGet');
+            throw new \InvalidArgumentException('Missing the required parameter $draft_id when calling getDraft');
         }
   
         // parse inputs
@@ -278,7 +362,7 @@ class DefaultApi
     }
     
     /**
-     * draftsDraftIdPostingsPost
+     * postDraft
      *
      * Post job draft to specified boards
      *
@@ -287,15 +371,15 @@ class DefaultApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function draftsDraftIdPostingsPost($draft_id, $postings = null)
+    public function postDraft($draft_id, $postings = null)
     {
-        list($response, $statusCode, $httpHeader) = $this->draftsDraftIdPostingsPostWithHttpInfo ($draft_id, $postings);
+        list($response, $statusCode, $httpHeader) = $this->postDraftWithHttpInfo ($draft_id, $postings);
         return $response; 
     }
 
 
     /**
-     * draftsDraftIdPostingsPostWithHttpInfo
+     * postDraftWithHttpInfo
      *
      * Post job draft to specified boards
      *
@@ -304,12 +388,12 @@ class DefaultApi
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function draftsDraftIdPostingsPostWithHttpInfo($draft_id, $postings = null)
+    public function postDraftWithHttpInfo($draft_id, $postings = null)
     {
         
         // verify the required parameter 'draft_id' is set
         if ($draft_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $draft_id when calling draftsDraftIdPostingsPost');
+            throw new \InvalidArgumentException('Missing the required parameter $draft_id when calling postDraft');
         }
   
         // parse inputs
@@ -343,90 +427,6 @@ class DefaultApi
         $_tempBody = null;
         if (isset($postings)) {
             $_tempBody = $postings;
-        }
-  
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
-        // this endpoint requires HTTP basic authentication
-        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
-            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
-        }
-        
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, 'POST',
-                $queryParams, $httpBody,
-                $headerParams
-            );
-            
-            return array(null, $statusCode, $httpHeader);
-            
-        } catch (ApiException $e) {
-            switch ($e->getCode()) { 
-            }
-  
-            throw $e;
-        }
-    }
-    
-    /**
-     * draftsPost
-     *
-     * Create a job draft for posting to boards
-     *
-     * @param \Swagger\Client\Model\Draft $draft  (optional)
-     * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     */
-    public function draftsPost($draft = null)
-    {
-        list($response, $statusCode, $httpHeader) = $this->draftsPostWithHttpInfo ($draft);
-        return $response; 
-    }
-
-
-    /**
-     * draftsPostWithHttpInfo
-     *
-     * Create a job draft for posting to boards
-     *
-     * @param \Swagger\Client\Model\Draft $draft  (optional)
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     */
-    public function draftsPostWithHttpInfo($draft = null)
-    {
-        
-  
-        // parse inputs
-        $resourcePath = "/drafts";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
-  
-        
-        
-        
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        // body params
-        $_tempBody = null;
-        if (isset($draft)) {
-            $_tempBody = $draft;
         }
   
         // for model (json/xml)

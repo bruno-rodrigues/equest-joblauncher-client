@@ -66,42 +66,42 @@ class DefaultApiTest extends \PHPUnit_Framework_TestCase
 
     
     /**
-     * Test case for boardsGet
-     *
-     * Returns boards available to post.
-     *
-     */
-    public function test_boardsGet() {
-
-    }
-    
-    /**
-     * Test case for draftsDraftIdGet
-     *
-     * Get Job Draft Dtaa
-     *
-     */
-    public function test_draftsDraftIdGet() {
-
-    }
-    
-    /**
-     * Test case for draftsDraftIdPostingsPost
-     *
-     * Post job draft to specified boards
-     *
-     */
-    public function test_draftsDraftIdPostingsPost() {
-
-    }
-    
-    /**
-     * Test case for draftsPost
+     * Test case for createDraft
      *
      * Create a job draft for posting to boards
      *
      */
-    public function test_draftsPost() {
+    public function test_createDraft() {
+
+    }
+    
+    /**
+     * Test case for getBoards
+     *
+     * Returns boards available to post.
+     *
+     */
+    public function test_getBoards() {
+
+    }
+    
+    /**
+     * Test case for getDraft
+     *
+     * Get Job Draft Dtaa
+     *
+     */
+    public function test_getDraft() {
+
+    }
+    
+    /**
+     * Test case for postDraft
+     *
+     * Post job draft to specified boards
+     *
+     */
+    public function test_postDraft() {
 
     }
     

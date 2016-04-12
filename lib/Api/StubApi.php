@@ -92,7 +92,7 @@ class StubApi
   
     
     /**
-     * jobsJobIdDelete
+     * deleteJob
      *
      * Delete/unpost job and close it
      *
@@ -100,15 +100,15 @@ class StubApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function jobsJobIdDelete($job_id)
+    public function deleteJob($job_id)
     {
-        list($response, $statusCode, $httpHeader) = $this->jobsJobIdDeleteWithHttpInfo ($job_id);
+        list($response, $statusCode, $httpHeader) = $this->deleteJobWithHttpInfo ($job_id);
         return $response; 
     }
 
 
     /**
-     * jobsJobIdDeleteWithHttpInfo
+     * deleteJobWithHttpInfo
      *
      * Delete/unpost job and close it
      *
@@ -116,12 +116,12 @@ class StubApi
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function jobsJobIdDeleteWithHttpInfo($job_id)
+    public function deleteJobWithHttpInfo($job_id)
     {
         
         // verify the required parameter 'job_id' is set
         if ($job_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $job_id when calling jobsJobIdDelete');
+            throw new \InvalidArgumentException('Missing the required parameter $job_id when calling deleteJob');
         }
   
         // parse inputs
@@ -184,7 +184,7 @@ class StubApi
     }
     
     /**
-     * jobsJobIdGet
+     * getJob
      *
      * Retrieve job data and status
      *
@@ -192,15 +192,15 @@ class StubApi
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function jobsJobIdGet($job_id)
+    public function getJob($job_id)
     {
-        list($response, $statusCode, $httpHeader) = $this->jobsJobIdGetWithHttpInfo ($job_id);
+        list($response, $statusCode, $httpHeader) = $this->getJobWithHttpInfo ($job_id);
         return $response; 
     }
 
 
     /**
-     * jobsJobIdGetWithHttpInfo
+     * getJobWithHttpInfo
      *
      * Retrieve job data and status
      *
@@ -208,12 +208,12 @@ class StubApi
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function jobsJobIdGetWithHttpInfo($job_id)
+    public function getJobWithHttpInfo($job_id)
     {
         
         // verify the required parameter 'job_id' is set
         if ($job_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $job_id when calling jobsJobIdGet');
+            throw new \InvalidArgumentException('Missing the required parameter $job_id when calling getJob');
         }
   
         // parse inputs
@@ -261,98 +261,6 @@ class StubApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'GET',
-                $queryParams, $httpBody,
-                $headerParams
-            );
-            
-            return array(null, $statusCode, $httpHeader);
-            
-        } catch (ApiException $e) {
-            switch ($e->getCode()) { 
-            }
-  
-            throw $e;
-        }
-    }
-    
-    /**
-     * jobsJobIdPatch
-     *
-     * Change job data without changing board selection
-     *
-     * @param int $job_id Job ID (required)
-     * @return void
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     */
-    public function jobsJobIdPatch($job_id)
-    {
-        list($response, $statusCode, $httpHeader) = $this->jobsJobIdPatchWithHttpInfo ($job_id);
-        return $response; 
-    }
-
-
-    /**
-     * jobsJobIdPatchWithHttpInfo
-     *
-     * Change job data without changing board selection
-     *
-     * @param int $job_id Job ID (required)
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     */
-    public function jobsJobIdPatchWithHttpInfo($job_id)
-    {
-        
-        // verify the required parameter 'job_id' is set
-        if ($job_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $job_id when calling jobsJobIdPatch');
-        }
-  
-        // parse inputs
-        $resourcePath = "/jobs/{job_id}";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
-  
-        
-        
-        // path params
-        
-        if ($job_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "job_id" . "}",
-                $this->apiClient->getSerializer()->toPathValue($job_id),
-                $resourcePath
-            );
-        }
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
-
-        
-        
-  
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        
-        // this endpoint requires HTTP basic authentication
-        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
-            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
-        }
-        
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath, 'PATCH',
                 $queryParams, $httpBody,
                 $headerParams
             );
@@ -459,6 +367,98 @@ class StubApi
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'DELETE',
+                $queryParams, $httpBody,
+                $headerParams
+            );
+            
+            return array(null, $statusCode, $httpHeader);
+            
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            }
+  
+            throw $e;
+        }
+    }
+    
+    /**
+     * updateJob
+     *
+     * Change job data without changing board selection
+     *
+     * @param int $job_id Job ID (required)
+     * @return void
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function updateJob($job_id)
+    {
+        list($response, $statusCode, $httpHeader) = $this->updateJobWithHttpInfo ($job_id);
+        return $response; 
+    }
+
+
+    /**
+     * updateJobWithHttpInfo
+     *
+     * Change job data without changing board selection
+     *
+     * @param int $job_id Job ID (required)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function updateJobWithHttpInfo($job_id)
+    {
+        
+        // verify the required parameter 'job_id' is set
+        if ($job_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $job_id when calling updateJob');
+        }
+  
+        // parse inputs
+        $resourcePath = "/jobs/{job_id}";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
+  
+        
+        
+        // path params
+        
+        if ($job_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "job_id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($job_id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'PATCH',
                 $queryParams, $httpBody,
                 $headerParams
             );
