@@ -169,6 +169,10 @@ class DefaultApi
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
+            case 400:
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorMessage', $e->getResponseHeaders());
+                $e->setResponseObject($data);
+                break;
             }
   
             throw $e;
