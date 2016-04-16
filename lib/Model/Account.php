@@ -38,7 +38,7 @@ use \ArrayAccess;
  * Account Class Doc Comment
  *
  * @category    Class
- * @description 
+ * @description Information about recruiter. For inetnal use only.
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2

@@ -112,13 +112,13 @@ class Company implements ArrayAccess
 
     
     /**
-      * $name 
+      * $name Company name. Defaults to account profile value.
       * @var string
       */
     protected $name;
     
     /**
-      * $description 
+      * $description Company description. Appears above Description and Required Skills when the board does not provide a specific field. Defaults to account profile value.
       * @var string
       */
     protected $description;
@@ -169,7 +169,7 @@ class Company implements ArrayAccess
   
     /**
      * Sets name
-     * @param string $name 
+     * @param string $name Company name. Defaults to account profile value.
      * @return $this
      */
     public function setName($name)
@@ -190,7 +190,7 @@ class Company implements ArrayAccess
   
     /**
      * Sets description
-     * @param string $description 
+     * @param string $description Company description. Appears above Description and Required Skills when the board does not provide a specific field. Defaults to account profile value.
      * @return $this
      */
     public function setDescription($description)

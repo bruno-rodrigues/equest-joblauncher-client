@@ -1,6 +1,6 @@
 <?php
 /**
- * LocationTest
+ * FreeTypeTest
  *
  * PHP version 5
  *
@@ -34,16 +34,16 @@
 namespace Swagger\Client\Model;
 
 /**
- * LocationTest Class Doc Comment
+ * FreeTypeTest Class Doc Comment
  *
  * @category    Class
- * @description Physical location of job position. There is no way to specify telecommute positions at this moment
+ * @description 
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class LocationTest extends \PHPUnit_Framework_TestCase
+class FreeTypeTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -61,9 +61,9 @@ class LocationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test Location
+     * Test FreeType
      */
-    public function testLocation() {
+    public function testFreeType() {
 
     }
 

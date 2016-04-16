@@ -38,7 +38,7 @@ use \ArrayAccess;
  * Location Class Doc Comment
  *
  * @category    Class
- * @description 
+ * @description Physical location of job position. There is no way to specify telecommute positions at this moment
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
@@ -108,13 +108,13 @@ class Location implements ArrayAccess
 
     
     /**
-      * $country 
+      * $country ISO 3166-1 Alpha 2 country code.
       * @var string
       */
     protected $country;
     
     /**
-      * $state 
+      * $state ISO 3166-2 state/province code.  Note, full code is required, e.g. US-CA
       * @var string
       */
     protected $state;
@@ -126,7 +126,7 @@ class Location implements ArrayAccess
     protected $city;
     
     /**
-      * $zip 
+      * $zip ZIP code is required for US locations and validated against USPS DB
       * @var string
       */
     protected $zip;
@@ -158,7 +158,7 @@ class Location implements ArrayAccess
   
     /**
      * Sets country
-     * @param string $country 
+     * @param string $country ISO 3166-1 Alpha 2 country code.
      * @return $this
      */
     public function setCountry($country)
@@ -179,7 +179,7 @@ class Location implements ArrayAccess
   
     /**
      * Sets state
-     * @param string $state 
+     * @param string $state ISO 3166-2 state/province code.  Note, full code is required, e.g. US-CA
      * @return $this
      */
     public function setState($state)
@@ -221,7 +221,7 @@ class Location implements ArrayAccess
   
     /**
      * Sets zip
-     * @param string $zip 
+     * @param string $zip ZIP code is required for US locations and validated against USPS DB
      * @return $this
      */
     public function setZip($zip)

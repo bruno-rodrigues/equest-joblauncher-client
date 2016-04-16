@@ -11,11 +11,11 @@ Method | HTTP request | Description
 
 
 # **createDraft**
-> createDraft($draft)
+> \Swagger\Client\Model\Draft createDraft($draft)
 
 Create a job draft for posting to boards
 
-Every time you want to change job data you have to create job draft first and then you can publish it to selected boards.\n \nDefault value vs empty value. If you decide to use eQuest defaults for some field - make sure you don't pass element in the request. Fields not present in the request will result in default value while empty value will be treated as intention to have it blank.\nResponse of this method includes Location header with URL of the created resource that you'll need to use for further actions. Job draft is one time object, if you need to change its data you should create a new one.\n \nYou can use sample [XML](/bundles/equestpostjobapi/job_data.xml) and [JSON](/bundles/equestpostjobapi/job_data.json) formatted data for experiments\n
+Every time you want to change job data you have to create job draft first and then you can publish it to selected boards.\n \nDefault value vs empty value. If you decide to use eQuest defaults for some field - make sure you don't pass element in the request. Fields not present in the request will result in default value while empty value will be treated as intention to have it blank.\nResponse of this method includes Location header with URL of the created resource that you'll need to use for further actions. Job draft is one time object, if you need to change its data you should create a new one.\n \nYou can use sample [XML](/bundles/equestpostjobapi/job_data.xml) and [JSON](/bundles/equestpostjobapi/job_data.json) formatted data for experiments.\n\nResponse will contain link(s), that allow you to navigate to interactive job edit form.\n
 
 ### Example 
 ```php
@@ -30,7 +30,8 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $draft = new \Swagger\Client\Model\Draft(); // \Swagger\Client\Model\Draft | 
 
 try { 
-    $api_instance->createDraft($draft);
+    $result = $api_instance->createDraft($draft);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->createDraft: ', $e->getMessage(), "\n";
 }
@@ -45,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Swagger\Client\Model\Draft**](Draft.md)
 
 ### Authorization
 

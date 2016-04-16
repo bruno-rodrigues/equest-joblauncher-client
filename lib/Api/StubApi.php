@@ -189,7 +189,7 @@ class StubApi
      * Retrieve job data and status
      *
      * @param int $job_id Job ID (required)
-     * @return void
+     * @return \Swagger\Client\Model\FreeType
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function getJob($job_id)
@@ -205,7 +205,7 @@ class StubApi
      * Retrieve job data and status
      *
      * @param int $job_id Job ID (required)
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \Swagger\Client\Model\FreeType, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function getJobWithHttpInfo($job_id)
@@ -262,13 +262,21 @@ class StubApi
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'GET',
                 $queryParams, $httpBody,
-                $headerParams
+                $headerParams, '\Swagger\Client\Model\FreeType'
             );
             
-            return array(null, $statusCode, $httpHeader);
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\FreeType', $httpHeader), $statusCode, $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
+            case 200:
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\FreeType', $e->getResponseHeaders());
+                $e->setResponseObject($data);
+                break;
             }
   
             throw $e;

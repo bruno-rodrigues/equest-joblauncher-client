@@ -100,13 +100,13 @@ class CandidateResponse implements ArrayAccess
 
     
     /**
-      * $url 
+      * $url URL on your career site where candidates apply to a job
       * @var string
       */
     protected $url;
     
     /**
-      * $email 
+      * $email Email to apply if web apply is not supported by a board.
       * @var string
       */
     protected $email;
@@ -136,7 +136,7 @@ class CandidateResponse implements ArrayAccess
   
     /**
      * Sets url
-     * @param string $url 
+     * @param string $url URL on your career site where candidates apply to a job
      * @return $this
      */
     public function setUrl($url)
@@ -157,7 +157,7 @@ class CandidateResponse implements ArrayAccess
   
     /**
      * Sets email
-     * @param string $email 
+     * @param string $email Email to apply if web apply is not supported by a board.
      * @return $this
      */
     public function setEmail($email)

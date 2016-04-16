@@ -37,7 +37,7 @@ namespace Swagger\Client\Model;
  * DraftTest Class Doc Comment
  *
  * @category    Class
- * @description 
+ * @description See Job/Draft parameter description at https://support.equest.com/index.php?pg=kb.page&amp;id=224
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2

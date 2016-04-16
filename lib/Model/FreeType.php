@@ -1,6 +1,6 @@
 <?php
 /**
- * Draft
+ * FreeType
  *
  * PHP version 5
  *
@@ -35,26 +35,23 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * Draft Class Doc Comment
+ * FreeType Class Doc Comment
  *
  * @category    Class
- * @description See Job/Draft parameter description at https://support.equest.com/index.php?pg=kb.page&amp;id=224
+ * @description 
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Draft implements ArrayAccess
+class FreeType implements ArrayAccess
 {
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'requisition_number' => 'string',
-        'position' => '\Swagger\Client\Model\Position',
-        'company' => '\Swagger\Client\Model\Company',
-        'candidate_response' => '\Swagger\Client\Model\CandidateResponse'
+        
     );
   
     static function swaggerTypes() {
@@ -66,10 +63,7 @@ class Draft implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'requisition_number' => 'requisition_number',
-        'position' => 'position',
-        'company' => 'company',
-        'candidate_response' => 'candidate_response'
+        
     );
   
     static function attributeMap() {
@@ -81,10 +75,7 @@ class Draft implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'requisition_number' => 'setRequisitionNumber',
-        'position' => 'setPosition',
-        'company' => 'setCompany',
-        'candidate_response' => 'setCandidateResponse'
+        
     );
   
     static function setters() {
@@ -96,40 +87,13 @@ class Draft implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'requisition_number' => 'getRequisitionNumber',
-        'position' => 'getPosition',
-        'company' => 'getCompany',
-        'candidate_response' => 'getCandidateResponse'
+        
     );
   
     static function getters() {
         return self::$getters;
     }
 
-    
-    /**
-      * $requisition_number 
-      * @var string
-      */
-    protected $requisition_number;
-    
-    /**
-      * $position 
-      * @var \Swagger\Client\Model\Position
-      */
-    protected $position;
-    
-    /**
-      * $company 
-      * @var \Swagger\Client\Model\Company
-      */
-    protected $company;
-    
-    /**
-      * $candidate_response 
-      * @var \Swagger\Client\Model\CandidateResponse
-      */
-    protected $candidate_response;
     
 
     /**
@@ -138,97 +102,9 @@ class Draft implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        
         if ($data != null) {
-            $this->requisition_number = $data["requisition_number"];
-            $this->position = $data["position"];
-            $this->company = $data["company"];
-            $this->candidate_response = $data["candidate_response"];
+            
         }
-    }
-    
-    /**
-     * Gets requisition_number
-     * @return string
-     */
-    public function getRequisitionNumber()
-    {
-        return $this->requisition_number;
-    }
-  
-    /**
-     * Sets requisition_number
-     * @param string $requisition_number 
-     * @return $this
-     */
-    public function setRequisitionNumber($requisition_number)
-    {
-        
-        $this->requisition_number = $requisition_number;
-        return $this;
-    }
-    
-    /**
-     * Gets position
-     * @return \Swagger\Client\Model\Position
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-  
-    /**
-     * Sets position
-     * @param \Swagger\Client\Model\Position $position 
-     * @return $this
-     */
-    public function setPosition($position)
-    {
-        
-        $this->position = $position;
-        return $this;
-    }
-    
-    /**
-     * Gets company
-     * @return \Swagger\Client\Model\Company
-     */
-    public function getCompany()
-    {
-        return $this->company;
-    }
-  
-    /**
-     * Sets company
-     * @param \Swagger\Client\Model\Company $company 
-     * @return $this
-     */
-    public function setCompany($company)
-    {
-        
-        $this->company = $company;
-        return $this;
-    }
-    
-    /**
-     * Gets candidate_response
-     * @return \Swagger\Client\Model\CandidateResponse
-     */
-    public function getCandidateResponse()
-    {
-        return $this->candidate_response;
-    }
-  
-    /**
-     * Sets candidate_response
-     * @param \Swagger\Client\Model\CandidateResponse $candidate_response 
-     * @return $this
-     */
-    public function setCandidateResponse($candidate_response)
-    {
-        
-        $this->candidate_response = $candidate_response;
-        return $this;
     }
     
     /**

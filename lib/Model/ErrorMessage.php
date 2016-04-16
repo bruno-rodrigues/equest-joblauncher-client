@@ -38,7 +38,7 @@ use \ArrayAccess;
  * ErrorMessage Class Doc Comment
  *
  * @category    Class
- * @description 
+ * @description errors property isn&#39;t defined as it contains dictionary of errors that isn&#39;t supported by all languages
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2

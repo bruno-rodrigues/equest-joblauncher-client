@@ -97,7 +97,7 @@ class DefaultApi
      * Create a job draft for posting to boards
      *
      * @param \Swagger\Client\Model\Draft $draft  (optional)
-     * @return void
+     * @return \Swagger\Client\Model\Draft
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function createDraft($draft = null)
@@ -113,7 +113,7 @@ class DefaultApi
      * Create a job draft for posting to boards
      *
      * @param \Swagger\Client\Model\Draft $draft  (optional)
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \Swagger\Client\Model\Draft, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function createDraftWithHttpInfo($draft = null)
@@ -162,13 +162,21 @@ class DefaultApi
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'POST',
                 $queryParams, $httpBody,
-                $headerParams
+                $headerParams, '\Swagger\Client\Model\Draft'
             );
             
-            return array(null, $statusCode, $httpHeader);
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Draft', $httpHeader), $statusCode, $httpHeader);
             
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
+            case 201:
+                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Draft', $e->getResponseHeaders());
+                $e->setResponseObject($data);
+                break;
             case 400:
                 $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorMessage', $e->getResponseHeaders());
                 $e->setResponseObject($data);

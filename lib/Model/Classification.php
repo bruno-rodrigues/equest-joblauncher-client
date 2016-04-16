@@ -114,19 +114,19 @@ class Classification implements ArrayAccess
     protected $type;
     
     /**
-      * $time 
+      * $time Position time classification, e.g. part or full time.
       * @var string
       */
-    protected $time;
+    protected $time = 'FULLTIME';
     
     /**
-      * $function 
+      * $function Job function O*Net code.
       * @var string
       */
     protected $function;
     
     /**
-      * $industry 
+      * $industry Job industry code. Defaults to value from account profile.
       * @var int
       */
     protected $industry;
@@ -179,7 +179,7 @@ class Classification implements ArrayAccess
   
     /**
      * Sets time
-     * @param string $time 
+     * @param string $time Position time classification, e.g. part or full time.
      * @return $this
      */
     public function setTime($time)
@@ -200,7 +200,7 @@ class Classification implements ArrayAccess
   
     /**
      * Sets function
-     * @param string $function 
+     * @param string $function Job function O*Net code.
      * @return $this
      */
     public function setFunction($function)
@@ -221,7 +221,7 @@ class Classification implements ArrayAccess
   
     /**
      * Sets industry
-     * @param int $industry 
+     * @param int $industry Job industry code. Defaults to value from account profile.
      * @return $this
      */
     public function setIndustry($industry)

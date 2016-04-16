@@ -138,19 +138,19 @@ class Position implements ArrayAccess
     protected $title;
     
     /**
-      * $description 
+      * $description Description of the job position.
       * @var string
       */
     protected $description;
     
     /**
-      * $skills 
+      * $skills Description of required skills.
       * @var string
       */
     protected $skills;
     
     /**
-      * $education 
+      * $education Description of education requirements.
       * @var string
       */
     protected $education;
@@ -245,7 +245,7 @@ class Position implements ArrayAccess
   
     /**
      * Sets description
-     * @param string $description 
+     * @param string $description Description of the job position.
      * @return $this
      */
     public function setDescription($description)
@@ -266,7 +266,7 @@ class Position implements ArrayAccess
   
     /**
      * Sets skills
-     * @param string $skills 
+     * @param string $skills Description of required skills.
      * @return $this
      */
     public function setSkills($skills)
@@ -287,7 +287,7 @@ class Position implements ArrayAccess
   
     /**
      * Sets education
-     * @param string $education 
+     * @param string $education Description of education requirements.
      * @return $this
      */
     public function setEducation($education)
