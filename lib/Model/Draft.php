@@ -51,6 +51,7 @@ class Draft implements ArrayAccess
       * @var string[]
       */
     static $swaggerTypes = array(
+        'id' => 'int',
         'requisition_number' => 'string',
         'position' => '\Swagger\Client\Model\Position',
         'company' => '\Swagger\Client\Model\Company',
@@ -66,6 +67,7 @@ class Draft implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
+        'id' => 'id',
         'requisition_number' => 'requisition_number',
         'position' => 'position',
         'company' => 'company',
@@ -81,6 +83,7 @@ class Draft implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
+        'id' => 'setId',
         'requisition_number' => 'setRequisitionNumber',
         'position' => 'setPosition',
         'company' => 'setCompany',
@@ -96,6 +99,7 @@ class Draft implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
+        'id' => 'getId',
         'requisition_number' => 'getRequisitionNumber',
         'position' => 'getPosition',
         'company' => 'getCompany',
@@ -106,6 +110,12 @@ class Draft implements ArrayAccess
         return self::$getters;
     }
 
+    
+    /**
+      * $id 
+      * @var int
+      */
+    protected $id;
     
     /**
       * $requisition_number 
@@ -140,11 +150,33 @@ class Draft implements ArrayAccess
     {
         
         if ($data != null) {
+            $this->id = $data["id"];
             $this->requisition_number = $data["requisition_number"];
             $this->position = $data["position"];
             $this->company = $data["company"];
             $this->candidate_response = $data["candidate_response"];
         }
+    }
+    
+    /**
+     * Gets id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+  
+    /**
+     * Sets id
+     * @param int $id 
+     * @return $this
+     */
+    public function setId($id)
+    {
+        
+        $this->id = $id;
+        return $this;
     }
     
     /**
