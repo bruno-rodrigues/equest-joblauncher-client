@@ -90,19 +90,18 @@ class DefaultApi
         return $this;
     }
   
-    
     /**
      * createDraft
      *
      * Create a job draft for posting to boards
      *
-     * @param \Swagger\Client\Model\Draft $draft  (optional)
-     * @return \Swagger\Client\Model\Draft
+     * @param \Swagger\Client\Model\Job $draft  (optional)
+     * @return \Swagger\Client\Model\Job
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function createDraft($draft = null)
     {
-        list($response, $statusCode, $httpHeader) = $this->createDraftWithHttpInfo ($draft);
+        list($response) = $this->createDraftWithHttpInfo ($draft);
         return $response; 
     }
 
@@ -112,8 +111,8 @@ class DefaultApi
      *
      * Create a job draft for posting to boards
      *
-     * @param \Swagger\Client\Model\Draft $draft  (optional)
-     * @return Array of \Swagger\Client\Model\Draft, HTTP status code, HTTP response headers (array of strings)
+     * @param \Swagger\Client\Model\Job $draft  (optional)
+     * @return Array of \Swagger\Client\Model\Job, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function createDraftWithHttpInfo($draft = null)
@@ -126,11 +125,11 @@ class DefaultApi
         $queryParams = array();
         $headerParams = array();
         $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
   
         
         
@@ -156,29 +155,26 @@ class DefaultApi
         if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
             $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'POST',
                 $queryParams, $httpBody,
-                $headerParams, '\Swagger\Client\Model\Draft'
+                $headerParams, '\Swagger\Client\Model\Job'
             );
-            
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Draft', $httpHeader), $statusCode, $httpHeader);
-            
-        } catch (ApiException $e) {
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Job', $httpHeader), $statusCode, $httpHeader);
+                    } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 201:
-                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Draft', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Job', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             case 400:
-                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorMessage', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorMessage', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -186,7 +182,6 @@ class DefaultApi
             throw $e;
         }
     }
-    
     /**
      * getBoards
      *
@@ -197,7 +192,7 @@ class DefaultApi
      */
     public function getBoards()
     {
-        list($response, $statusCode, $httpHeader) = $this->getBoardsWithHttpInfo ();
+        list($response) = $this->getBoardsWithHttpInfo ();
         return $response; 
     }
 
@@ -220,11 +215,11 @@ class DefaultApi
         $queryParams = array();
         $headerParams = array();
         $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
   
         
         
@@ -246,7 +241,6 @@ class DefaultApi
         if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
             $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -254,17 +248,15 @@ class DefaultApi
                 $queryParams, $httpBody,
                 $headerParams, '\Swagger\Client\Model\BoardsList'
             );
-            
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\BoardsList', $httpHeader), $statusCode, $httpHeader);
-            
-        } catch (ApiException $e) {
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\BoardsList', $httpHeader), $statusCode, $httpHeader);
+                    } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\BoardsList', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\BoardsList', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -272,19 +264,18 @@ class DefaultApi
             throw $e;
         }
     }
-    
     /**
      * getDraft
      *
-     * Get Job Draft Dtaa
+     * Get Job Draft Data
      *
      * @param int $draft_id  (required)
-     * @return \Swagger\Client\Model\Draft
+     * @return \Swagger\Client\Model\Job
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function getDraft($draft_id)
     {
-        list($response, $statusCode, $httpHeader) = $this->getDraftWithHttpInfo ($draft_id);
+        list($response) = $this->getDraftWithHttpInfo ($draft_id);
         return $response; 
     }
 
@@ -292,10 +283,10 @@ class DefaultApi
     /**
      * getDraftWithHttpInfo
      *
-     * Get Job Draft Dtaa
+     * Get Job Draft Data
      *
      * @param int $draft_id  (required)
-     * @return Array of \Swagger\Client\Model\Draft, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \Swagger\Client\Model\Job, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function getDraftWithHttpInfo($draft_id)
@@ -312,16 +303,15 @@ class DefaultApi
         $queryParams = array();
         $headerParams = array();
         $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
   
         
         
         // path params
-        
         if ($draft_id !== null) {
             $resourcePath = str_replace(
                 "{" . "draft_id" . "}",
@@ -346,25 +336,22 @@ class DefaultApi
         if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
             $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'GET',
                 $queryParams, $httpBody,
-                $headerParams, '\Swagger\Client\Model\Draft'
+                $headerParams, '\Swagger\Client\Model\Job'
             );
-            
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array(\Swagger\Client\ObjectSerializer::deserialize($response, '\Swagger\Client\Model\Draft', $httpHeader), $statusCode, $httpHeader);
-            
-        } catch (ApiException $e) {
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Job', $httpHeader), $statusCode, $httpHeader);
+                    } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = \Swagger\Client\ObjectSerializer::deserialize($e->getResponseBody(), '\Swagger\Client\Model\Draft', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Job', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -372,7 +359,101 @@ class DefaultApi
             throw $e;
         }
     }
-    
+    /**
+     * getJobPostings
+     *
+     * Returns job's status on boards
+     *
+     * @param int $job_id Job ID (required)
+     * @return \Swagger\Client\Model\Postings
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function getJobPostings($job_id)
+    {
+        list($response) = $this->getJobPostingsWithHttpInfo ($job_id);
+        return $response; 
+    }
+
+
+    /**
+     * getJobPostingsWithHttpInfo
+     *
+     * Returns job's status on boards
+     *
+     * @param int $job_id Job ID (required)
+     * @return Array of \Swagger\Client\Model\Postings, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function getJobPostingsWithHttpInfo($job_id)
+    {
+        
+        // verify the required parameter 'job_id' is set
+        if ($job_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $job_id when calling getJobPostings');
+        }
+  
+        // parse inputs
+        $resourcePath = "/jobs/{job_id}/postings";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
+  
+        
+        
+        // path params
+        if ($job_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "job_id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($job_id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'GET',
+                $queryParams, $httpBody,
+                $headerParams, '\Swagger\Client\Model\Postings'
+            );
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Postings', $httpHeader), $statusCode, $httpHeader);
+                    } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            case 200:
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Postings', $e->getResponseHeaders());
+                $e->setResponseObject($data);
+                break;
+            }
+  
+            throw $e;
+        }
+    }
     /**
      * postDraft
      *
@@ -385,7 +466,7 @@ class DefaultApi
      */
     public function postDraft($draft_id, $postings = null)
     {
-        list($response, $statusCode, $httpHeader) = $this->postDraftWithHttpInfo ($draft_id, $postings);
+        list($response) = $this->postDraftWithHttpInfo ($draft_id, $postings);
         return $response; 
     }
 
@@ -414,16 +495,15 @@ class DefaultApi
         $queryParams = array();
         $headerParams = array();
         $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
   
         
         
         // path params
-        
         if ($draft_id !== null) {
             $resourcePath = str_replace(
                 "{" . "draft_id" . "}",
@@ -452,7 +532,6 @@ class DefaultApi
         if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
             $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -460,9 +539,8 @@ class DefaultApi
                 $queryParams, $httpBody,
                 $headerParams
             );
-            
+
             return array(null, $statusCode, $httpHeader);
-            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
@@ -470,5 +548,4 @@ class DefaultApi
             throw $e;
         }
     }
-    
 }

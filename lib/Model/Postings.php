@@ -47,6 +47,12 @@ use \ArrayAccess;
 class Postings implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'Postings';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
@@ -94,13 +100,11 @@ class Postings implements ArrayAccess
         return self::$getters;
     }
 
-    
     /**
       * $postings 
       * @var \Swagger\Client\Model\Posting[]
       */
     protected $postings;
-    
 
     /**
      * Constructor
@@ -109,11 +113,11 @@ class Postings implements ArrayAccess
     public function __construct(array $data = null)
     {
         
+        
         if ($data != null) {
             $this->postings = $data["postings"];
         }
     }
-    
     /**
      * Gets postings
      * @return \Swagger\Client\Model\Posting[]
@@ -134,7 +138,6 @@ class Postings implements ArrayAccess
         $this->postings = $postings;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -182,10 +185,10 @@ class Postings implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

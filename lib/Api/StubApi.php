@@ -90,7 +90,6 @@ class StubApi
         return $this;
     }
   
-    
     /**
      * deleteJob
      *
@@ -102,7 +101,7 @@ class StubApi
      */
     public function deleteJob($job_id)
     {
-        list($response, $statusCode, $httpHeader) = $this->deleteJobWithHttpInfo ($job_id);
+        list($response) = $this->deleteJobWithHttpInfo ($job_id);
         return $response; 
     }
 
@@ -130,16 +129,15 @@ class StubApi
         $queryParams = array();
         $headerParams = array();
         $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
   
         
         
         // path params
-        
         if ($job_id !== null) {
             $resourcePath = str_replace(
                 "{" . "job_id" . "}",
@@ -164,7 +162,6 @@ class StubApi
         if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
             $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -172,9 +169,8 @@ class StubApi
                 $queryParams, $httpBody,
                 $headerParams
             );
-            
+
             return array(null, $statusCode, $httpHeader);
-            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
@@ -182,19 +178,18 @@ class StubApi
             throw $e;
         }
     }
-    
     /**
      * getJob
      *
      * Retrieve job data and status
      *
      * @param int $job_id Job ID (required)
-     * @return void
+     * @return \Swagger\Client\Model\Job
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function getJob($job_id)
     {
-        list($response, $statusCode, $httpHeader) = $this->getJobWithHttpInfo ($job_id);
+        list($response) = $this->getJobWithHttpInfo ($job_id);
         return $response; 
     }
 
@@ -205,7 +200,7 @@ class StubApi
      * Retrieve job data and status
      *
      * @param int $job_id Job ID (required)
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \Swagger\Client\Model\Job, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function getJobWithHttpInfo($job_id)
@@ -222,16 +217,15 @@ class StubApi
         $queryParams = array();
         $headerParams = array();
         $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
   
         
         
         // path params
-        
         if ($job_id !== null) {
             $resourcePath = str_replace(
                 "{" . "job_id" . "}",
@@ -256,25 +250,29 @@ class StubApi
         if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
             $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'GET',
                 $queryParams, $httpBody,
-                $headerParams
+                $headerParams, '\Swagger\Client\Model\Job'
             );
-            
-            return array(null, $statusCode, $httpHeader);
-            
-        } catch (ApiException $e) {
+            if (!$response) {
+                return array(null, $statusCode, $httpHeader);
+            }
+
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Job', $httpHeader), $statusCode, $httpHeader);
+                    } catch (ApiException $e) {
             switch ($e->getCode()) { 
+            case 200:
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Job', $e->getResponseHeaders());
+                $e->setResponseObject($data);
+                break;
             }
   
             throw $e;
         }
     }
-    
     /**
      * jobsJobIdPostingsPostingIdDelete
      *
@@ -287,7 +285,7 @@ class StubApi
      */
     public function jobsJobIdPostingsPostingIdDelete($job_id, $posting_id)
     {
-        list($response, $statusCode, $httpHeader) = $this->jobsJobIdPostingsPostingIdDeleteWithHttpInfo ($job_id, $posting_id);
+        list($response) = $this->jobsJobIdPostingsPostingIdDeleteWithHttpInfo ($job_id, $posting_id);
         return $response; 
     }
 
@@ -320,16 +318,15 @@ class StubApi
         $queryParams = array();
         $headerParams = array();
         $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
   
         
         
         // path params
-        
         if ($job_id !== null) {
             $resourcePath = str_replace(
                 "{" . "job_id" . "}",
@@ -337,7 +334,6 @@ class StubApi
                 $resourcePath
             );
         }// path params
-        
         if ($posting_id !== null) {
             $resourcePath = str_replace(
                 "{" . "posting_id" . "}",
@@ -362,7 +358,6 @@ class StubApi
         if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
             $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -370,9 +365,8 @@ class StubApi
                 $queryParams, $httpBody,
                 $headerParams
             );
-            
+
             return array(null, $statusCode, $httpHeader);
-            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
@@ -380,7 +374,6 @@ class StubApi
             throw $e;
         }
     }
-    
     /**
      * updateJob
      *
@@ -392,7 +385,7 @@ class StubApi
      */
     public function updateJob($job_id)
     {
-        list($response, $statusCode, $httpHeader) = $this->updateJobWithHttpInfo ($job_id);
+        list($response) = $this->updateJobWithHttpInfo ($job_id);
         return $response; 
     }
 
@@ -420,16 +413,15 @@ class StubApi
         $queryParams = array();
         $headerParams = array();
         $formParams = array();
-        $_header_accept = ApiClient::selectHeaderAccept(array('application/json', 'text/xml'));
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
         if (!is_null($_header_accept)) {
             $headerParams['Accept'] = $_header_accept;
         }
-        $headerParams['Content-Type'] = ApiClient::selectHeaderContentType(array('application/json','text/xml'));
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
   
         
         
         // path params
-        
         if ($job_id !== null) {
             $resourcePath = str_replace(
                 "{" . "job_id" . "}",
@@ -454,7 +446,6 @@ class StubApi
         if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
             $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
         }
-        
         // make the API Call
         try {
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
@@ -462,9 +453,8 @@ class StubApi
                 $queryParams, $httpBody,
                 $headerParams
             );
-            
+
             return array(null, $statusCode, $httpHeader);
-            
         } catch (ApiException $e) {
             switch ($e->getCode()) { 
             }
@@ -472,5 +462,4 @@ class StubApi
             throw $e;
         }
     }
-    
 }

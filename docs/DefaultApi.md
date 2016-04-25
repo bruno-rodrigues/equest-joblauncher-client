@@ -6,12 +6,13 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createDraft**](DefaultApi.md#createDraft) | **POST** /drafts | Create a job draft for posting to boards
 [**getBoards**](DefaultApi.md#getBoards) | **GET** /boards | Returns boards available to post.
-[**getDraft**](DefaultApi.md#getDraft) | **GET** /drafts/{draft_id} | Get Job Draft Dtaa
+[**getDraft**](DefaultApi.md#getDraft) | **GET** /drafts/{draft_id} | Get Job Draft Data
+[**getJobPostings**](DefaultApi.md#getJobPostings) | **GET** /jobs/{job_id}/postings | Returns job&#39;s status on boards
 [**postDraft**](DefaultApi.md#postDraft) | **POST** /drafts/{draft_id}/postings | Post job draft to specified boards
 
 
 # **createDraft**
-> \Swagger\Client\Model\Draft createDraft($draft)
+> \Swagger\Client\Model\Job createDraft($draft)
 
 Create a job draft for posting to boards
 
@@ -27,7 +28,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERN
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
-$draft = new \Swagger\Client\Model\Draft(); // \Swagger\Client\Model\Draft | 
+$draft = new \Swagger\Client\Model\Job(); // \Swagger\Client\Model\Job | 
 
 try { 
     $result = $api_instance->createDraft($draft);
@@ -42,17 +43,17 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **draft** | [**\Swagger\Client\Model\Draft**](\Swagger\Client\Model\Draft.md)|  | [optional] 
+ **draft** | [**\Swagger\Client\Model\Job**](\Swagger\Client\Model\Job.md)|  | [optional] 
 
 ### Return type
 
-[**\Swagger\Client\Model\Draft**](Draft.md)
+[**\Swagger\Client\Model\Job**](Job.md)
 
 ### Authorization
 
 [http_basic](../README.md#http_basic)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json, text/xml
  - **Accept**: application/json, text/xml
@@ -95,7 +96,7 @@ This endpoint does not need any parameter.
 
 [http_basic](../README.md#http_basic)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json, text/xml
  - **Accept**: application/json, text/xml
@@ -103,9 +104,9 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDraft**
-> \Swagger\Client\Model\Draft getDraft($draft_id)
+> \Swagger\Client\Model\Job getDraft($draft_id)
 
-Get Job Draft Dtaa
+Get Job Draft Data
 
 this method is to test state of job draft after creating one. There is no real use for production environment.
 
@@ -134,17 +135,64 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **draft_id** | [**int**](.md)|  | 
+ **draft_id** | **int**|  | 
 
 ### Return type
 
-[**\Swagger\Client\Model\Draft**](Draft.md)
+[**\Swagger\Client\Model\Job**](Job.md)
 
 ### Authorization
 
 [http_basic](../README.md#http_basic)
 
-### HTTP reuqest headers
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getJobPostings**
+> \Swagger\Client\Model\Postings getJobPostings($job_id)
+
+Returns job's status on boards
+
+### Example 
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: http_basic
+Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$job_id = 789; // int | Job ID
+
+try { 
+    $result = $api_instance->getJobPostings($job_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getJobPostings: ', $e->getMessage(), "\n";
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **int**| Job ID | 
+
+### Return type
+
+[**\Swagger\Client\Model\Postings**](Postings.md)
+
+### Authorization
+
+[http_basic](../README.md#http_basic)
+
+### HTTP request headers
 
  - **Content-Type**: application/json, text/xml
  - **Accept**: application/json, text/xml
@@ -183,7 +231,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **draft_id** | [**int**](.md)|  | 
+ **draft_id** | **int**|  | 
  **postings** | [**\Swagger\Client\Model\Postings**](\Swagger\Client\Model\Postings.md)|  | [optional] 
 
 ### Return type
@@ -194,7 +242,7 @@ void (empty response body)
 
 [http_basic](../README.md#http_basic)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json, text/xml
  - **Accept**: application/json, text/xml

@@ -47,6 +47,12 @@ use \ArrayAccess;
 class BoardsList implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'BoardsList';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
@@ -94,13 +100,11 @@ class BoardsList implements ArrayAccess
         return self::$getters;
     }
 
-    
     /**
       * $boards 
       * @var \Swagger\Client\Model\Board[]
       */
     protected $boards;
-    
 
     /**
      * Constructor
@@ -109,11 +113,11 @@ class BoardsList implements ArrayAccess
     public function __construct(array $data = null)
     {
         
+        
         if ($data != null) {
             $this->boards = $data["boards"];
         }
     }
-    
     /**
      * Gets boards
      * @return \Swagger\Client\Model\Board[]
@@ -134,7 +138,6 @@ class BoardsList implements ArrayAccess
         $this->boards = $boards;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -182,10 +185,10 @@ class BoardsList implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

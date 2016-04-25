@@ -47,6 +47,12 @@ use \ArrayAccess;
 class Company implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'Company';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
@@ -110,37 +116,31 @@ class Company implements ArrayAccess
         return self::$getters;
     }
 
-    
     /**
       * $name Company name. Defaults to account profile value.
       * @var string
       */
     protected $name;
-    
     /**
       * $description Company description. Appears above Description and Required Skills when the board does not provide a specific field. Defaults to account profile value.
       * @var string
       */
     protected $description;
-    
     /**
       * $division 
       * @var string
       */
     protected $division;
-    
     /**
       * $department 
       * @var string
       */
     protected $department;
-    
     /**
       * $account 
       * @var \Swagger\Client\Model\Account
       */
     protected $account;
-    
 
     /**
      * Constructor
@@ -148,6 +148,7 @@ class Company implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        
         
         if ($data != null) {
             $this->name = $data["name"];
@@ -157,7 +158,6 @@ class Company implements ArrayAccess
             $this->account = $data["account"];
         }
     }
-    
     /**
      * Gets name
      * @return string
@@ -178,7 +178,6 @@ class Company implements ArrayAccess
         $this->name = $name;
         return $this;
     }
-    
     /**
      * Gets description
      * @return string
@@ -199,7 +198,6 @@ class Company implements ArrayAccess
         $this->description = $description;
         return $this;
     }
-    
     /**
      * Gets division
      * @return string
@@ -220,7 +218,6 @@ class Company implements ArrayAccess
         $this->division = $division;
         return $this;
     }
-    
     /**
      * Gets department
      * @return string
@@ -241,7 +238,6 @@ class Company implements ArrayAccess
         $this->department = $department;
         return $this;
     }
-    
     /**
      * Gets account
      * @return \Swagger\Client\Model\Account
@@ -262,7 +258,6 @@ class Company implements ArrayAccess
         $this->account = $account;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -310,10 +305,10 @@ class Company implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

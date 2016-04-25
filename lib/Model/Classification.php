@@ -47,6 +47,12 @@ use \ArrayAccess;
 class Classification implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'Classification';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
@@ -106,31 +112,26 @@ class Classification implements ArrayAccess
         return self::$getters;
     }
 
-    
     /**
       * $type 
       * @var string
       */
     protected $type;
-    
     /**
       * $time Position time classification, e.g. part or full time.
       * @var string
       */
     protected $time = 'FULLTIME';
-    
     /**
       * $function Job function O*Net code.
       * @var string
       */
     protected $function;
-    
     /**
       * $industry Job industry code. Defaults to value from account profile.
       * @var int
       */
     protected $industry;
-    
 
     /**
      * Constructor
@@ -139,6 +140,7 @@ class Classification implements ArrayAccess
     public function __construct(array $data = null)
     {
         
+        
         if ($data != null) {
             $this->type = $data["type"];
             $this->time = $data["time"];
@@ -146,7 +148,6 @@ class Classification implements ArrayAccess
             $this->industry = $data["industry"];
         }
     }
-    
     /**
      * Gets type
      * @return string
@@ -167,7 +168,6 @@ class Classification implements ArrayAccess
         $this->type = $type;
         return $this;
     }
-    
     /**
      * Gets time
      * @return string
@@ -188,7 +188,6 @@ class Classification implements ArrayAccess
         $this->time = $time;
         return $this;
     }
-    
     /**
      * Gets function
      * @return string
@@ -209,7 +208,6 @@ class Classification implements ArrayAccess
         $this->function = $function;
         return $this;
     }
-    
     /**
      * Gets industry
      * @return int
@@ -230,7 +228,6 @@ class Classification implements ArrayAccess
         $this->industry = $industry;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -278,10 +275,10 @@ class Classification implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

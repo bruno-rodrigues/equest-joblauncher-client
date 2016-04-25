@@ -37,7 +37,7 @@ namespace Swagger\Client\Model;
  * AccountTest Class Doc Comment
  *
  * @category    Class
- * @description Information about recruiter. For inetnal use only.
+ * @description Information about recruiter. For internal use only.
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2

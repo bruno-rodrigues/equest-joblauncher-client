@@ -64,7 +64,6 @@ class StubApiTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    
     /**
      * Test case for deleteJob
      *
@@ -74,7 +73,6 @@ class StubApiTest extends \PHPUnit_Framework_TestCase
     public function test_deleteJob() {
 
     }
-    
     /**
      * Test case for getJob
      *
@@ -84,7 +82,6 @@ class StubApiTest extends \PHPUnit_Framework_TestCase
     public function test_getJob() {
 
     }
-    
     /**
      * Test case for jobsJobIdPostingsPostingIdDelete
      *
@@ -94,7 +91,6 @@ class StubApiTest extends \PHPUnit_Framework_TestCase
     public function test_jobsJobIdPostingsPostingIdDelete() {
 
     }
-    
     /**
      * Test case for updateJob
      *
@@ -104,5 +100,4 @@ class StubApiTest extends \PHPUnit_Framework_TestCase
     public function test_updateJob() {
 
     }
-    
 }

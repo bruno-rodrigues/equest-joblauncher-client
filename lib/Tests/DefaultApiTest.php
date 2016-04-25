@@ -64,7 +64,6 @@ class DefaultApiTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    
     /**
      * Test case for createDraft
      *
@@ -74,7 +73,6 @@ class DefaultApiTest extends \PHPUnit_Framework_TestCase
     public function test_createDraft() {
 
     }
-    
     /**
      * Test case for getBoards
      *
@@ -84,17 +82,24 @@ class DefaultApiTest extends \PHPUnit_Framework_TestCase
     public function test_getBoards() {
 
     }
-    
     /**
      * Test case for getDraft
      *
-     * Get Job Draft Dtaa
+     * Get Job Draft Data
      *
      */
     public function test_getDraft() {
 
     }
-    
+    /**
+     * Test case for getJobPostings
+     *
+     * Returns job's status on boards
+     *
+     */
+    public function test_getJobPostings() {
+
+    }
     /**
      * Test case for postDraft
      *
@@ -104,5 +109,4 @@ class DefaultApiTest extends \PHPUnit_Framework_TestCase
     public function test_postDraft() {
 
     }
-    
 }

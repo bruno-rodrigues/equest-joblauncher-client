@@ -1,6 +1,6 @@
 <?php
 /**
- * Draft
+ * Job
  *
  * PHP version 5
  *
@@ -35,17 +35,23 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * Draft Class Doc Comment
+ * Job Class Doc Comment
  *
  * @category    Class
- * @description See Job/Draft parameter description at https://support.equest.com/index.php?pg=kb.page&amp;id=224
+ * @description See Job/Draft parameter description at https://support.equest.com/index.php?pg&#x3D;kb.page&amp;id&#x3D;224
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Draft implements ArrayAccess
+class Job implements ArrayAccess
 {
+    /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'Job';
+
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
@@ -55,7 +61,8 @@ class Draft implements ArrayAccess
         'requisition_number' => 'string',
         'position' => '\Swagger\Client\Model\Position',
         'company' => '\Swagger\Client\Model\Company',
-        'candidate_response' => '\Swagger\Client\Model\CandidateResponse'
+        'candidate_response' => '\Swagger\Client\Model\CandidateResponse',
+        '_links' => 'object'
     );
   
     static function swaggerTypes() {
@@ -71,7 +78,8 @@ class Draft implements ArrayAccess
         'requisition_number' => 'requisition_number',
         'position' => 'position',
         'company' => 'company',
-        'candidate_response' => 'candidate_response'
+        'candidate_response' => 'candidate_response',
+        '_links' => '_links'
     );
   
     static function attributeMap() {
@@ -87,7 +95,8 @@ class Draft implements ArrayAccess
         'requisition_number' => 'setRequisitionNumber',
         'position' => 'setPosition',
         'company' => 'setCompany',
-        'candidate_response' => 'setCandidateResponse'
+        'candidate_response' => 'setCandidateResponse',
+        '_links' => 'setLinks'
     );
   
     static function setters() {
@@ -103,44 +112,44 @@ class Draft implements ArrayAccess
         'requisition_number' => 'getRequisitionNumber',
         'position' => 'getPosition',
         'company' => 'getCompany',
-        'candidate_response' => 'getCandidateResponse'
+        'candidate_response' => 'getCandidateResponse',
+        '_links' => 'getLinks'
     );
   
     static function getters() {
         return self::$getters;
     }
 
-    
     /**
       * $id 
       * @var int
       */
     protected $id;
-    
     /**
       * $requisition_number 
       * @var string
       */
     protected $requisition_number;
-    
     /**
       * $position 
       * @var \Swagger\Client\Model\Position
       */
     protected $position;
-    
     /**
       * $company 
       * @var \Swagger\Client\Model\Company
       */
     protected $company;
-    
     /**
       * $candidate_response 
       * @var \Swagger\Client\Model\CandidateResponse
       */
     protected $candidate_response;
-    
+    /**
+      * $_links Dictionary of related links
+      * @var object
+      */
+    protected $_links;
 
     /**
      * Constructor
@@ -149,15 +158,16 @@ class Draft implements ArrayAccess
     public function __construct(array $data = null)
     {
         
+        
         if ($data != null) {
             $this->id = $data["id"];
             $this->requisition_number = $data["requisition_number"];
             $this->position = $data["position"];
             $this->company = $data["company"];
             $this->candidate_response = $data["candidate_response"];
+            $this->_links = $data["_links"];
         }
     }
-    
     /**
      * Gets id
      * @return int
@@ -178,7 +188,6 @@ class Draft implements ArrayAccess
         $this->id = $id;
         return $this;
     }
-    
     /**
      * Gets requisition_number
      * @return string
@@ -199,7 +208,6 @@ class Draft implements ArrayAccess
         $this->requisition_number = $requisition_number;
         return $this;
     }
-    
     /**
      * Gets position
      * @return \Swagger\Client\Model\Position
@@ -220,7 +228,6 @@ class Draft implements ArrayAccess
         $this->position = $position;
         return $this;
     }
-    
     /**
      * Gets company
      * @return \Swagger\Client\Model\Company
@@ -241,7 +248,6 @@ class Draft implements ArrayAccess
         $this->company = $company;
         return $this;
     }
-    
     /**
      * Gets candidate_response
      * @return \Swagger\Client\Model\CandidateResponse
@@ -262,7 +268,26 @@ class Draft implements ArrayAccess
         $this->candidate_response = $candidate_response;
         return $this;
     }
-    
+    /**
+     * Gets _links
+     * @return object
+     */
+    public function getLinks()
+    {
+        return $this->_links;
+    }
+  
+    /**
+     * Sets _links
+     * @param object $_links Dictionary of related links
+     * @return $this
+     */
+    public function setLinks($_links)
+    {
+        
+        $this->_links = $_links;
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -310,10 +335,10 @@ class Draft implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

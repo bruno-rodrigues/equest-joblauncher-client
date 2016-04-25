@@ -49,7 +49,7 @@ void (empty response body)
 
 [http_basic](../README.md#http_basic)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json, text/xml
  - **Accept**: application/json, text/xml
@@ -57,7 +57,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getJob**
-> getJob($job_id)
+> \Swagger\Client\Model\Job getJob($job_id)
 
 Retrieve job data and status
 
@@ -74,7 +74,8 @@ $api_instance = new Swagger\Client\Api\StubApi();
 $job_id = 789; // int | Job ID
 
 try { 
-    $api_instance->getJob($job_id);
+    $result = $api_instance->getJob($job_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StubApi->getJob: ', $e->getMessage(), "\n";
 }
@@ -89,13 +90,13 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\Swagger\Client\Model\Job**](Job.md)
 
 ### Authorization
 
 [http_basic](../README.md#http_basic)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json, text/xml
  - **Accept**: application/json, text/xml
@@ -143,7 +144,7 @@ void (empty response body)
 
 [http_basic](../README.md#http_basic)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json, text/xml
  - **Accept**: application/json, text/xml
@@ -189,7 +190,7 @@ void (empty response body)
 
 [http_basic](../README.md#http_basic)
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json, text/xml
  - **Accept**: application/json, text/xml

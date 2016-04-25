@@ -47,6 +47,12 @@ use \ArrayAccess;
 class CandidateResponse implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'CandidateResponse';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
@@ -98,19 +104,16 @@ class CandidateResponse implements ArrayAccess
         return self::$getters;
     }
 
-    
     /**
       * $url URL on your career site where candidates apply to a job
       * @var string
       */
     protected $url;
-    
     /**
       * $email Email to apply if web apply is not supported by a board.
       * @var string
       */
     protected $email;
-    
 
     /**
      * Constructor
@@ -119,12 +122,12 @@ class CandidateResponse implements ArrayAccess
     public function __construct(array $data = null)
     {
         
+        
         if ($data != null) {
             $this->url = $data["url"];
             $this->email = $data["email"];
         }
     }
-    
     /**
      * Gets url
      * @return string
@@ -145,7 +148,6 @@ class CandidateResponse implements ArrayAccess
         $this->url = $url;
         return $this;
     }
-    
     /**
      * Gets email
      * @return string
@@ -166,7 +168,6 @@ class CandidateResponse implements ArrayAccess
         $this->email = $email;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -214,10 +215,10 @@ class CandidateResponse implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

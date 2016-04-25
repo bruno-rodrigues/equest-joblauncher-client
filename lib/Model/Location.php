@@ -47,6 +47,12 @@ use \ArrayAccess;
 class Location implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'Location';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
@@ -106,31 +112,26 @@ class Location implements ArrayAccess
         return self::$getters;
     }
 
-    
     /**
       * $country ISO 3166-1 Alpha 2 country code.
       * @var string
       */
     protected $country;
-    
     /**
       * $state ISO 3166-2 state/province code.  Note, full code is required, e.g. US-CA
       * @var string
       */
     protected $state;
-    
     /**
       * $city 
       * @var string
       */
     protected $city;
-    
     /**
       * $zip ZIP code is required for US locations and validated against USPS DB
       * @var string
       */
     protected $zip;
-    
 
     /**
      * Constructor
@@ -139,6 +140,7 @@ class Location implements ArrayAccess
     public function __construct(array $data = null)
     {
         
+        
         if ($data != null) {
             $this->country = $data["country"];
             $this->state = $data["state"];
@@ -146,7 +148,6 @@ class Location implements ArrayAccess
             $this->zip = $data["zip"];
         }
     }
-    
     /**
      * Gets country
      * @return string
@@ -167,7 +168,6 @@ class Location implements ArrayAccess
         $this->country = $country;
         return $this;
     }
-    
     /**
      * Gets state
      * @return string
@@ -188,7 +188,6 @@ class Location implements ArrayAccess
         $this->state = $state;
         return $this;
     }
-    
     /**
      * Gets city
      * @return string
@@ -209,7 +208,6 @@ class Location implements ArrayAccess
         $this->city = $city;
         return $this;
     }
-    
     /**
      * Gets zip
      * @return string
@@ -230,7 +228,6 @@ class Location implements ArrayAccess
         $this->zip = $zip;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -278,10 +275,10 @@ class Location implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

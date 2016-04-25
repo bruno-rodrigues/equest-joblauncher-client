@@ -47,6 +47,12 @@ use \ArrayAccess;
 class Range implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'Range';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
@@ -98,19 +104,16 @@ class Range implements ArrayAccess
         return self::$getters;
     }
 
-    
     /**
       * $min 
       * @var int
       */
     protected $min;
-    
     /**
       * $max 
       * @var int
       */
     protected $max;
-    
 
     /**
      * Constructor
@@ -119,12 +122,12 @@ class Range implements ArrayAccess
     public function __construct(array $data = null)
     {
         
+        
         if ($data != null) {
             $this->min = $data["min"];
             $this->max = $data["max"];
         }
     }
-    
     /**
      * Gets min
      * @return int
@@ -145,7 +148,6 @@ class Range implements ArrayAccess
         $this->min = $min;
         return $this;
     }
-    
     /**
      * Gets max
      * @return int
@@ -166,7 +168,6 @@ class Range implements ArrayAccess
         $this->max = $max;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -214,10 +215,10 @@ class Range implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

@@ -47,6 +47,12 @@ use \ArrayAccess;
 class ErrorMessage implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'ErrorMessage';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
@@ -98,19 +104,16 @@ class ErrorMessage implements ArrayAccess
         return self::$getters;
     }
 
-    
     /**
       * $code 
       * @var int
       */
     protected $code;
-    
     /**
       * $message 
       * @var string
       */
     protected $message;
-    
 
     /**
      * Constructor
@@ -119,12 +122,12 @@ class ErrorMessage implements ArrayAccess
     public function __construct(array $data = null)
     {
         
+        
         if ($data != null) {
             $this->code = $data["code"];
             $this->message = $data["message"];
         }
     }
-    
     /**
      * Gets code
      * @return int
@@ -145,7 +148,6 @@ class ErrorMessage implements ArrayAccess
         $this->code = $code;
         return $this;
     }
-    
     /**
      * Gets message
      * @return string
@@ -166,7 +168,6 @@ class ErrorMessage implements ArrayAccess
         $this->message = $message;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -214,10 +215,10 @@ class ErrorMessage implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

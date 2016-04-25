@@ -47,6 +47,12 @@ use \ArrayAccess;
 class Compensation implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'Compensation';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
@@ -102,25 +108,21 @@ class Compensation implements ArrayAccess
         return self::$getters;
     }
 
-    
     /**
       * $range 
       * @var \Swagger\Client\Model\Range
       */
     protected $range;
-    
     /**
       * $type 
       * @var string
       */
     protected $type;
-    
     /**
       * $currency 
       * @var string
       */
     protected $currency;
-    
 
     /**
      * Constructor
@@ -129,13 +131,13 @@ class Compensation implements ArrayAccess
     public function __construct(array $data = null)
     {
         
+        
         if ($data != null) {
             $this->range = $data["range"];
             $this->type = $data["type"];
             $this->currency = $data["currency"];
         }
     }
-    
     /**
      * Gets range
      * @return \Swagger\Client\Model\Range
@@ -156,7 +158,6 @@ class Compensation implements ArrayAccess
         $this->range = $range;
         return $this;
     }
-    
     /**
      * Gets type
      * @return string
@@ -177,7 +178,6 @@ class Compensation implements ArrayAccess
         $this->type = $type;
         return $this;
     }
-    
     /**
      * Gets currency
      * @return string
@@ -198,7 +198,6 @@ class Compensation implements ArrayAccess
         $this->currency = $currency;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -246,10 +245,10 @@ class Compensation implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }

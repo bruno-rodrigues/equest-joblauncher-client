@@ -47,10 +47,17 @@ use \ArrayAccess;
 class Posting implements ArrayAccess
 {
     /**
+      * The original name of the model.
+      * @var string
+      */
+    static $swaggerModelName = 'Posting';
+
+    /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
+        'id' => 'int',
         'board' => '\Swagger\Client\Model\Board'
     );
   
@@ -63,6 +70,7 @@ class Posting implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
+        'id' => 'id',
         'board' => 'board'
     );
   
@@ -75,6 +83,7 @@ class Posting implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
+        'id' => 'setId',
         'board' => 'setBoard'
     );
   
@@ -87,6 +96,7 @@ class Posting implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
+        'id' => 'getId',
         'board' => 'getBoard'
     );
   
@@ -94,13 +104,16 @@ class Posting implements ArrayAccess
         return self::$getters;
     }
 
-    
+    /**
+      * $id 
+      * @var int
+      */
+    protected $id;
     /**
       * $board 
       * @var \Swagger\Client\Model\Board
       */
     protected $board;
-    
 
     /**
      * Constructor
@@ -109,11 +122,32 @@ class Posting implements ArrayAccess
     public function __construct(array $data = null)
     {
         
+        
         if ($data != null) {
+            $this->id = $data["id"];
             $this->board = $data["board"];
         }
     }
-    
+    /**
+     * Gets id
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+  
+    /**
+     * Sets id
+     * @param int $id 
+     * @return $this
+     */
+    public function setId($id)
+    {
+        
+        $this->id = $id;
+        return $this;
+    }
     /**
      * Gets board
      * @return \Swagger\Client\Model\Board
@@ -134,7 +168,6 @@ class Posting implements ArrayAccess
         $this->board = $board;
         return $this;
     }
-    
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset 
@@ -182,10 +215,10 @@ class Posting implements ArrayAccess
      */
     public function __toString()
     {
-        if (defined('JSON_PRETTY_PRINT')) {
+        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
             return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        } else {
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
         }
+
+        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
