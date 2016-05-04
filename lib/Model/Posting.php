@@ -58,7 +58,8 @@ class Posting implements ArrayAccess
       */
     static $swaggerTypes = array(
         'id' => 'int',
-        'board' => '\Swagger\Client\Model\Board'
+        'board' => '\Swagger\Client\Model\Board',
+        'board_status' => '\Swagger\Client\Model\PostingBoardStatus'
     );
   
     static function swaggerTypes() {
@@ -71,7 +72,8 @@ class Posting implements ArrayAccess
       */
     static $attributeMap = array(
         'id' => 'id',
-        'board' => 'board'
+        'board' => 'board',
+        'board_status' => 'board_status'
     );
   
     static function attributeMap() {
@@ -84,7 +86,8 @@ class Posting implements ArrayAccess
       */
     static $setters = array(
         'id' => 'setId',
-        'board' => 'setBoard'
+        'board' => 'setBoard',
+        'board_status' => 'setBoardStatus'
     );
   
     static function setters() {
@@ -97,7 +100,8 @@ class Posting implements ArrayAccess
       */
     static $getters = array(
         'id' => 'getId',
-        'board' => 'getBoard'
+        'board' => 'getBoard',
+        'board_status' => 'getBoardStatus'
     );
   
     static function getters() {
@@ -114,6 +118,11 @@ class Posting implements ArrayAccess
       * @var \Swagger\Client\Model\Board
       */
     protected $board;
+    /**
+      * $board_status 
+      * @var \Swagger\Client\Model\PostingBoardStatus
+      */
+    protected $board_status;
 
     /**
      * Constructor
@@ -126,6 +135,7 @@ class Posting implements ArrayAccess
         if ($data != null) {
             $this->id = $data["id"];
             $this->board = $data["board"];
+            $this->board_status = $data["board_status"];
         }
     }
     /**
@@ -166,6 +176,26 @@ class Posting implements ArrayAccess
     {
         
         $this->board = $board;
+        return $this;
+    }
+    /**
+     * Gets board_status
+     * @return \Swagger\Client\Model\PostingBoardStatus
+     */
+    public function getBoardStatus()
+    {
+        return $this->board_status;
+    }
+  
+    /**
+     * Sets board_status
+     * @param \Swagger\Client\Model\PostingBoardStatus $board_status 
+     * @return $this
+     */
+    public function setBoardStatus($board_status)
+    {
+        
+        $this->board_status = $board_status;
         return $this;
     }
     /**

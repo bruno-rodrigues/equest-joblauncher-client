@@ -74,15 +74,6 @@ class StubApiTest extends \PHPUnit_Framework_TestCase
 
     }
     /**
-     * Test case for getJob
-     *
-     * Retrieve job data and status
-     *
-     */
-    public function test_getJob() {
-
-    }
-    /**
      * Test case for jobsJobIdPostingsPostingIdDelete
      *
      * Delete/unpost job from specific board

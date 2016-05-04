@@ -92,12 +92,30 @@ class DefaultApiTest extends \PHPUnit_Framework_TestCase
 
     }
     /**
+     * Test case for getJob
+     *
+     * Retrieve job data and status
+     *
+     */
+    public function test_getJob() {
+
+    }
+    /**
      * Test case for getJobPostings
      *
      * Returns job's status on boards
      *
      */
     public function test_getJobPostings() {
+
+    }
+    /**
+     * Test case for getJobs
+     *
+     * Search customer's jobs
+     *
+     */
+    public function test_getJobs() {
 
     }
     /**

@@ -5,7 +5,6 @@ All URIs are relative to *http://localhost/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteJob**](StubApi.md#deleteJob) | **DELETE** /jobs/{job_id} | Delete/unpost job and close it
-[**getJob**](StubApi.md#getJob) | **GET** /jobs/{job_id} | Retrieve job data and status
 [**jobsJobIdPostingsPostingIdDelete**](StubApi.md#jobsJobIdPostingsPostingIdDelete) | **DELETE** /jobs/{job_id}/postings/{posting_id} | Delete/unpost job from specific board
 [**updateJob**](StubApi.md#updateJob) | **PATCH** /jobs/{job_id} | Change job data without changing board selection
 
@@ -44,53 +43,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
-
-### Authorization
-
-[http_basic](../README.md#http_basic)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/xml
- - **Accept**: application/json, text/xml
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getJob**
-> \Swagger\Client\Model\Job getJob($job_id)
-
-Retrieve job data and status
-
-### Example 
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure HTTP basic authorization: http_basic
-Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
-Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
-
-$api_instance = new Swagger\Client\Api\StubApi();
-$job_id = 789; // int | Job ID
-
-try { 
-    $result = $api_instance->getJob($job_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling StubApi->getJob: ', $e->getMessage(), "\n";
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **job_id** | **int**| Job ID | 
-
-### Return type
-
-[**\Swagger\Client\Model\Job**](Job.md)
 
 ### Authorization
 
