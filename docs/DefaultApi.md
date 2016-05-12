@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getBoards**
-> \Swagger\Client\Model\BoardsList getBoards()
+> \Swagger\Client\Model\Board[] getBoards()
 
 Returns boards available to post.
 
@@ -92,7 +92,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\BoardsList**](BoardsList.md)
+[**\Swagger\Client\Model\Board[]**](Board.md)
 
 ### Authorization
 
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getJobs**
-> object getJobs()
+> \Swagger\Client\Model\Job[] getJobs($requisition_number)
 
 Search customer's jobs
 
@@ -263,9 +263,10 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERN
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
+$requisition_number = "requisition_number_example"; // string | Requisition Number
 
 try { 
-    $result = $api_instance->getJobs();
+    $result = $api_instance->getJobs($requisition_number);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getJobs: ', $e->getMessage(), "\n";
@@ -274,11 +275,14 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requisition_number** | **string**| Requisition Number | [optional] 
 
 ### Return type
 
-**object**
+[**\Swagger\Client\Model\Job[]**](Job.md)
 
 ### Authorization
 
@@ -309,7 +313,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSW
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
 $draft_id = 56; // int | 
-$postings = new \Swagger\Client\Model\Postings(); // \Swagger\Client\Model\Postings | 
+$postings = array(new Posting()); // \Swagger\Client\Model\Posting[] | 
 
 try { 
     $api_instance->postDraft($draft_id, $postings);
@@ -324,7 +328,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **draft_id** | **int**|  | 
- **postings** | [**\Swagger\Client\Model\Postings**](\Swagger\Client\Model\Postings.md)|  | [optional] 
+ **postings** | [**\Swagger\Client\Model\Posting[]**](Posting.md)|  | [optional] 
 
 ### Return type
 

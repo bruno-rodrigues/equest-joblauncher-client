@@ -187,7 +187,7 @@ class DefaultApi
      *
      * Returns boards available to post.
      *
-     * @return \Swagger\Client\Model\BoardsList
+     * @return \Swagger\Client\Model\Board[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function getBoards()
@@ -202,7 +202,7 @@ class DefaultApi
      *
      * Returns boards available to post.
      *
-     * @return Array of \Swagger\Client\Model\BoardsList, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \Swagger\Client\Model\Board[], HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function getBoardsWithHttpInfo()
@@ -246,17 +246,17 @@ class DefaultApi
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'GET',
                 $queryParams, $httpBody,
-                $headerParams, '\Swagger\Client\Model\BoardsList'
+                $headerParams, '\Swagger\Client\Model\Board[]'
             );
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\BoardsList', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Board[]', $httpHeader), $statusCode, $httpHeader);
                     } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\BoardsList', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Board[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -554,12 +554,13 @@ class DefaultApi
      *
      * Search customer's jobs
      *
-     * @return object
+     * @param string $requisition_number Requisition Number (optional)
+     * @return \Swagger\Client\Model\Job[]
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function getJobs()
+    public function getJobs($requisition_number = null)
     {
-        list($response) = $this->getJobsWithHttpInfo ();
+        list($response) = $this->getJobsWithHttpInfo ($requisition_number);
         return $response; 
     }
 
@@ -569,10 +570,11 @@ class DefaultApi
      *
      * Search customer's jobs
      *
-     * @return Array of object, HTTP status code, HTTP response headers (array of strings)
+     * @param string $requisition_number Requisition Number (optional)
+     * @return Array of \Swagger\Client\Model\Job[], HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
-    public function getJobsWithHttpInfo()
+    public function getJobsWithHttpInfo($requisition_number = null)
     {
         
   
@@ -588,7 +590,10 @@ class DefaultApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
   
-        
+        // query params
+        if ($requisition_number !== null) {
+            $queryParams['requisition_number'] = $this->apiClient->getSerializer()->toQueryValue($requisition_number);
+        }
         
         
         // default format to json
@@ -613,17 +618,17 @@ class DefaultApi
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'GET',
                 $queryParams, $httpBody,
-                $headerParams, 'object'
+                $headerParams, '\Swagger\Client\Model\Job[]'
             );
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, 'object', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Job[]', $httpHeader), $statusCode, $httpHeader);
                     } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), 'object', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Job[]', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }
@@ -637,7 +642,7 @@ class DefaultApi
      * Post job draft to specified boards
      *
      * @param int $draft_id  (required)
-     * @param \Swagger\Client\Model\Postings $postings  (optional)
+     * @param \Swagger\Client\Model\Posting[] $postings  (optional)
      * @return void
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
@@ -654,7 +659,7 @@ class DefaultApi
      * Post job draft to specified boards
      *
      * @param int $draft_id  (required)
-     * @param \Swagger\Client\Model\Postings $postings  (optional)
+     * @param \Swagger\Client\Model\Posting[] $postings  (optional)
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
