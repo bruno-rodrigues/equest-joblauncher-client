@@ -64,7 +64,7 @@ class DefaultApi
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
-            $apiClient->getConfig()->setHost('http://localhost/api');
+            $apiClient->getConfig()->setHost('https://localhost/api');
         }
   
         $this->apiClient = $apiClient;
@@ -95,8 +95,8 @@ class DefaultApi
      *
      * Create a job draft for posting to boards
      *
-     * @param \Swagger\Client\Model\Job $draft  (optional)
-     * @return \Swagger\Client\Model\Job
+     * @param \Swagger\Client\Model\Draft $draft  (optional)
+     * @return \Swagger\Client\Model\Draft
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function createDraft($draft = null)
@@ -111,8 +111,8 @@ class DefaultApi
      *
      * Create a job draft for posting to boards
      *
-     * @param \Swagger\Client\Model\Job $draft  (optional)
-     * @return Array of \Swagger\Client\Model\Job, HTTP status code, HTTP response headers (array of strings)
+     * @param \Swagger\Client\Model\Draft $draft  (optional)
+     * @return Array of \Swagger\Client\Model\Draft, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function createDraftWithHttpInfo($draft = null)
@@ -160,23 +160,212 @@ class DefaultApi
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'POST',
                 $queryParams, $httpBody,
-                $headerParams, '\Swagger\Client\Model\Job'
+                $headerParams, '\Swagger\Client\Model\Draft'
             );
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Job', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Draft', $httpHeader), $statusCode, $httpHeader);
                     } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 201:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Job', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Draft', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             case 400:
                 $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\ErrorMessage', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
+            }
+  
+            throw $e;
+        }
+    }
+    /**
+     * deleteJob
+     *
+     * Delete/unpost job and close it
+     *
+     * @param int $job_id Job ID (required)
+     * @return void
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function deleteJob($job_id)
+    {
+        list($response) = $this->deleteJobWithHttpInfo ($job_id);
+        return $response; 
+    }
+
+
+    /**
+     * deleteJobWithHttpInfo
+     *
+     * Delete/unpost job and close it
+     *
+     * @param int $job_id Job ID (required)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function deleteJobWithHttpInfo($job_id)
+    {
+        
+        // verify the required parameter 'job_id' is set
+        if ($job_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $job_id when calling deleteJob');
+        }
+  
+        // parse inputs
+        $resourcePath = "/jobs/{job_id}";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
+  
+        
+        
+        // path params
+        if ($job_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "job_id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($job_id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'DELETE',
+                $queryParams, $httpBody,
+                $headerParams
+            );
+
+            return array(null, $statusCode, $httpHeader);
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
+            }
+  
+            throw $e;
+        }
+    }
+    /**
+     * deleteJobPosting
+     *
+     * Delete/unpost job from specific board
+     *
+     * @param int $job_id Job ID (required)
+     * @param int $posting_id Posting ID (required)
+     * @return void
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function deleteJobPosting($job_id, $posting_id)
+    {
+        list($response) = $this->deleteJobPostingWithHttpInfo ($job_id, $posting_id);
+        return $response; 
+    }
+
+
+    /**
+     * deleteJobPostingWithHttpInfo
+     *
+     * Delete/unpost job from specific board
+     *
+     * @param int $job_id Job ID (required)
+     * @param int $posting_id Posting ID (required)
+     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     */
+    public function deleteJobPostingWithHttpInfo($job_id, $posting_id)
+    {
+        
+        // verify the required parameter 'job_id' is set
+        if ($job_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $job_id when calling deleteJobPosting');
+        }
+        // verify the required parameter 'posting_id' is set
+        if ($posting_id === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $posting_id when calling deleteJobPosting');
+        }
+  
+        // parse inputs
+        $resourcePath = "/jobs/{job_id}/postings/{posting_id}";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json', 'text/xml'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
+  
+        
+        
+        // path params
+        if ($job_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "job_id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($job_id),
+                $resourcePath
+            );
+        }// path params
+        if ($posting_id !== null) {
+            $resourcePath = str_replace(
+                "{" . "posting_id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($posting_id),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        
+  
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        
+        // this endpoint requires HTTP basic authentication
+        if (strlen($this->apiClient->getConfig()->getUsername()) !== 0 or strlen($this->apiClient->getConfig()->getPassword()) !== 0) {
+            $headerParams['Authorization'] = 'Basic ' . base64_encode($this->apiClient->getConfig()->getUsername() . ":" . $this->apiClient->getConfig()->getPassword());
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath, 'DELETE',
+                $queryParams, $httpBody,
+                $headerParams
+            );
+
+            return array(null, $statusCode, $httpHeader);
+        } catch (ApiException $e) {
+            switch ($e->getCode()) { 
             }
   
             throw $e;
@@ -270,7 +459,7 @@ class DefaultApi
      * Get Job Draft Data
      *
      * @param int $draft_id  (required)
-     * @return \Swagger\Client\Model\Job
+     * @return \Swagger\Client\Model\Draft
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function getDraft($draft_id)
@@ -286,7 +475,7 @@ class DefaultApi
      * Get Job Draft Data
      *
      * @param int $draft_id  (required)
-     * @return Array of \Swagger\Client\Model\Job, HTTP status code, HTTP response headers (array of strings)
+     * @return Array of \Swagger\Client\Model\Draft, HTTP status code, HTTP response headers (array of strings)
      * @throws \Swagger\Client\ApiException on non-2xx response
      */
     public function getDraftWithHttpInfo($draft_id)
@@ -341,17 +530,17 @@ class DefaultApi
             list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
                 $resourcePath, 'GET',
                 $queryParams, $httpBody,
-                $headerParams, '\Swagger\Client\Model\Job'
+                $headerParams, '\Swagger\Client\Model\Draft'
             );
             if (!$response) {
                 return array(null, $statusCode, $httpHeader);
             }
 
-            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Job', $httpHeader), $statusCode, $httpHeader);
+            return array($this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Draft', $httpHeader), $statusCode, $httpHeader);
                     } catch (ApiException $e) {
             switch ($e->getCode()) { 
             case 200:
-                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Job', $e->getResponseHeaders());
+                $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Draft', $e->getResponseHeaders());
                 $e->setResponseObject($data);
                 break;
             }

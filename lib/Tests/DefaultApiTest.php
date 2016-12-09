@@ -74,6 +74,24 @@ class DefaultApiTest extends \PHPUnit_Framework_TestCase
 
     }
     /**
+     * Test case for deleteJob
+     *
+     * Delete/unpost job and close it
+     *
+     */
+    public function test_deleteJob() {
+
+    }
+    /**
+     * Test case for deleteJobPosting
+     *
+     * Delete/unpost job from specific board
+     *
+     */
+    public function test_deleteJobPosting() {
+
+    }
+    /**
      * Test case for getBoards
      *
      * Returns boards available to post.

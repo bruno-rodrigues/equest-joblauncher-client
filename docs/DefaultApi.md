@@ -1,10 +1,12 @@
 # Swagger\Client\DefaultApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *https://localhost/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createDraft**](DefaultApi.md#createDraft) | **POST** /drafts | Create a job draft for posting to boards
+[**deleteJob**](DefaultApi.md#deleteJob) | **DELETE** /jobs/{job_id} | Delete/unpost job and close it
+[**deleteJobPosting**](DefaultApi.md#deleteJobPosting) | **DELETE** /jobs/{job_id}/postings/{posting_id} | Delete/unpost job from specific board
 [**getBoards**](DefaultApi.md#getBoards) | **GET** /boards | Returns boards available to post.
 [**getDraft**](DefaultApi.md#getDraft) | **GET** /drafts/{draft_id} | Get Job Draft Data
 [**getJob**](DefaultApi.md#getJob) | **GET** /jobs/{job_id} | Retrieve job data and status
@@ -14,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **createDraft**
-> \Swagger\Client\Model\Job createDraft($draft)
+> \Swagger\Client\Model\Draft createDraft($draft)
 
 Create a job draft for posting to boards
 
@@ -30,7 +32,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERN
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
-$draft = new \Swagger\Client\Model\Job(); // \Swagger\Client\Model\Job | 
+$draft = new \Swagger\Client\Model\Draft(); // \Swagger\Client\Model\Draft | 
 
 try { 
     $result = $api_instance->createDraft($draft);
@@ -45,11 +47,105 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **draft** | [**\Swagger\Client\Model\Job**](\Swagger\Client\Model\Job.md)|  | [optional] 
+ **draft** | [**\Swagger\Client\Model\Draft**](\Swagger\Client\Model\Draft.md)|  | [optional] 
 
 ### Return type
 
-[**\Swagger\Client\Model\Job**](Job.md)
+[**\Swagger\Client\Model\Draft**](Draft.md)
+
+### Authorization
+
+[http_basic](../README.md#http_basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteJob**
+> deleteJob($job_id)
+
+Delete/unpost job and close it
+
+### Example 
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: http_basic
+Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$job_id = 789; // int | Job ID
+
+try { 
+    $api_instance->deleteJob($job_id);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->deleteJob: ', $e->getMessage(), "\n";
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **int**| Job ID | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[http_basic](../README.md#http_basic)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/xml
+ - **Accept**: application/json, text/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteJobPosting**
+> deleteJobPosting($job_id, $posting_id)
+
+Delete/unpost job from specific board
+
+### Example 
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: http_basic
+Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$job_id = 789; // int | Job ID
+$posting_id = 789; // int | Posting ID
+
+try { 
+    $api_instance->deleteJobPosting($job_id, $posting_id);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->deleteJobPosting: ', $e->getMessage(), "\n";
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **int**| Job ID | 
+ **posting_id** | **int**| Posting ID | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -106,7 +202,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getDraft**
-> \Swagger\Client\Model\Job getDraft($draft_id)
+> \Swagger\Client\Model\Draft getDraft($draft_id)
 
 Get Job Draft Data
 
@@ -141,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\Job**](Job.md)
+[**\Swagger\Client\Model\Draft**](Draft.md)
 
 ### Authorization
 

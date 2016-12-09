@@ -128,7 +128,7 @@ class Location implements ArrayAccess
       */
     protected $city;
     /**
-      * $zip ZIP code is required for US locations and validated against USPS DB
+      * $zip If ZIP code is not passed, we'll generate one for US locations based on USPS database.
       * @var string
       */
     protected $zip;
@@ -219,7 +219,7 @@ class Location implements ArrayAccess
   
     /**
      * Sets zip
-     * @param string $zip ZIP code is required for US locations and validated against USPS DB
+     * @param string $zip If ZIP code is not passed, we'll generate one for US locations based on USPS database.
      * @return $this
      */
     public function setZip($zip)

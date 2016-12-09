@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorMessage
+ * Draft
  *
  * PHP version 5
  *
@@ -35,35 +35,33 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * ErrorMessage Class Doc Comment
+ * Draft Class Doc Comment
  *
  * @category    Class
- * @description errors property isn&#39;t defined as it contains dictionary of errors that isn&#39;t supported by all languages
+ * @description 
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class ErrorMessage implements ArrayAccess
+class Draft extends Job implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    static $swaggerModelName = 'ErrorMessage';
+    static $swaggerModelName = 'Draft';
 
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'code' => 'int',
-        'message' => 'string',
-        '_links' => 'object'
+        'return_url' => 'string'
     );
   
     static function swaggerTypes() {
-        return self::$swaggerTypes;
+        return self::$swaggerTypes + parent::swaggerTypes();
     }
 
     /** 
@@ -71,13 +69,11 @@ class ErrorMessage implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'code' => 'code',
-        'message' => 'message',
-        '_links' => '_links'
+        'return_url' => 'return_url'
     );
   
     static function attributeMap() {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -85,13 +81,11 @@ class ErrorMessage implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        '_links' => 'setLinks'
+        'return_url' => 'setReturnUrl'
     );
   
     static function setters() {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -99,30 +93,18 @@ class ErrorMessage implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        '_links' => 'getLinks'
+        'return_url' => 'getReturnUrl'
     );
   
     static function getters() {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /**
-      * $code 
-      * @var int
-      */
-    protected $code;
-    /**
-      * $message 
+      * $return_url 
       * @var string
       */
-    protected $message;
-    /**
-      * $_links Dictionary of related links
-      * @var object
-      */
-    protected $_links;
+    protected $return_url;
 
     /**
      * Constructor
@@ -130,72 +112,30 @@ class ErrorMessage implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        
+        parent::__construct($data);
         
         if ($data != null) {
-            $this->code = $data["code"];
-            $this->message = $data["message"];
-            $this->_links = $data["_links"];
+            $this->return_url = $data["return_url"];
         }
     }
     /**
-     * Gets code
-     * @return int
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-  
-    /**
-     * Sets code
-     * @param int $code 
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        
-        $this->code = $code;
-        return $this;
-    }
-    /**
-     * Gets message
+     * Gets return_url
      * @return string
      */
-    public function getMessage()
+    public function getReturnUrl()
     {
-        return $this->message;
+        return $this->return_url;
     }
   
     /**
-     * Sets message
-     * @param string $message 
+     * Sets return_url
+     * @param string $return_url 
      * @return $this
      */
-    public function setMessage($message)
+    public function setReturnUrl($return_url)
     {
         
-        $this->message = $message;
-        return $this;
-    }
-    /**
-     * Gets _links
-     * @return object
-     */
-    public function getLinks()
-    {
-        return $this->_links;
-    }
-  
-    /**
-     * Sets _links
-     * @param object $_links Dictionary of related links
-     * @return $this
-     */
-    public function setLinks($_links)
-    {
-        
-        $this->_links = $_links;
+        $this->return_url = $return_url;
         return $this;
     }
     /**
