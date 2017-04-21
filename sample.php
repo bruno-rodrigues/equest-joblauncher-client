@@ -1,5 +1,5 @@
 <?php
-require_once 'SwaggerClient-php/autoload.php';
+require_once __DIR__ . '/autoload.php';
 
 $config = require __DIR__ . "/config.php";
 $defaultConfiguration = Swagger\Client\Configuration::getDefaultConfiguration();
@@ -10,7 +10,7 @@ $defaultConfiguration
 $api = new Swagger\Client\Api\DefaultApi();
 $api->getApiClient()->getConfig()
     ->setHost($config["endpoint"])
-    ->addDefaultHeader("X-Accept-Version", "1.0")
+    ->addDefaultHeader("X-Accept-Version", "1.1")
     ->setDebug(false);
 
 try {
@@ -26,6 +26,11 @@ try {
     }
     $postingsArray = [
         (new \Swagger\Client\Model\Posting())->setBoard($boards[0])
+            ->setPostingInstructions(
+                (new \Swagger\Client\Model\PostingInstructions())
+                    ->setScheduledAt(new \DateTime("+1 day"))
+                    ->setUnpostAt(new \DateTime("+ 2 day"))
+            )
     ];
     echo "--- Post job to first available board\n";
     $api->postDraft($draft->getId(), $postingsArray);
@@ -44,7 +49,7 @@ try {
     echo "--- Get posting info\n";
     $postings = $api->getJobPostings($jobs[0]->getId());
     foreach ($postings as $posting) {
-        printf(" * %d\t%s\t%s\n", $posting->getId(), $posting->getBoard()->getName(), $posting->getBoardStatus()->getState());
+        echo indent((string) $posting) . "\n";
     }
     echo "--- Delete posting\n";
     $api->deleteJobPosting($jobs[0]->getId(), $postings[0]->getId());
@@ -106,4 +111,9 @@ function listJobs(\Swagger\Client\Api\DefaultApi $api)
     foreach ($response as $job) {
         printf("%d\t%s\t %s\n", $job->getId(), $job->getRequisitionNumber(), $job->getPosition()->getTitle());
     }
+}
+
+function indent($text, $linePrefix = "\t")
+{
+    return preg_replace("/^/m", $linePrefix, $text);
 }
