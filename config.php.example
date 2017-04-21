@@ -1,0 +1,6 @@
+<?php
+return [
+    "username" => "YOUR_ACCOUNT_NAME",
+    "password" => "YOUR_ACCOUNT_PASSWORD",
+    "endpoint" => "http(s)://joblauncher.{ZONE.}equest.com/api"
+];
