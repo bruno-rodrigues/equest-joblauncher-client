@@ -1,6 +1,6 @@
 <?php
 /**
- * Posting
+ * PostingInstructions
  *
  * PHP version 5
  *
@@ -35,32 +35,30 @@ namespace Swagger\Client\Model;
 
 use \ArrayAccess;
 /**
- * Posting Class Doc Comment
+ * PostingInstructions Class Doc Comment
  *
  * @category    Class
- * @description 
+ * @description Instructions on posting to board.
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Posting implements ArrayAccess
+class PostingInstructions implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    static $swaggerModelName = 'Posting';
+    static $swaggerModelName = 'PostingInstructions';
 
     /**
       * Array of property to type mappings. Used for (de)serialization 
       * @var string[]
       */
     static $swaggerTypes = array(
-        'id' => 'int',
-        'board' => '\Swagger\Client\Model\Board',
-        'board_status' => '\Swagger\Client\Model\PostingBoardStatus',
-        'posting_instructions' => '\Swagger\Client\Model\PostingInstructions'
+        'scheduled_at' => '\DateTime',
+        'unpost_at' => '\DateTime'
     );
   
     static function swaggerTypes() {
@@ -72,10 +70,8 @@ class Posting implements ArrayAccess
       * @var string[] 
       */
     static $attributeMap = array(
-        'id' => 'id',
-        'board' => 'board',
-        'board_status' => 'board_status',
-        'posting_instructions' => 'posting_instructions'
+        'scheduled_at' => 'scheduled_at',
+        'unpost_at' => 'unpost_at'
     );
   
     static function attributeMap() {
@@ -87,10 +83,8 @@ class Posting implements ArrayAccess
       * @var string[]
       */
     static $setters = array(
-        'id' => 'setId',
-        'board' => 'setBoard',
-        'board_status' => 'setBoardStatus',
-        'posting_instructions' => 'setPostingInstructions'
+        'scheduled_at' => 'setScheduledAt',
+        'unpost_at' => 'setUnpostAt'
     );
   
     static function setters() {
@@ -102,10 +96,8 @@ class Posting implements ArrayAccess
       * @var string[]
       */
     static $getters = array(
-        'id' => 'getId',
-        'board' => 'getBoard',
-        'board_status' => 'getBoardStatus',
-        'posting_instructions' => 'getPostingInstructions'
+        'scheduled_at' => 'getScheduledAt',
+        'unpost_at' => 'getUnpostAt'
     );
   
     static function getters() {
@@ -113,25 +105,15 @@ class Posting implements ArrayAccess
     }
 
     /**
-      * $id 
-      * @var int
+      * $scheduled_at Timestamp when posting is requested to be published. NULL for immediate delivery.
+      * @var \DateTime
       */
-    protected $id;
+    protected $scheduled_at;
     /**
-      * $board Board reference
-      * @var \Swagger\Client\Model\Board
+      * $unpost_at Timestamp when posting is requested to be unposted from a board. NULL to let expire.
+      * @var \DateTime
       */
-    protected $board;
-    /**
-      * $board_status Read-only status of posting on a board
-      * @var \Swagger\Client\Model\PostingBoardStatus
-      */
-    protected $board_status;
-    /**
-      * $posting_instructions Board delivery instructions
-      * @var \Swagger\Client\Model\PostingInstructions
-      */
-    protected $posting_instructions;
+    protected $unpost_at;
 
     /**
      * Constructor
@@ -142,90 +124,48 @@ class Posting implements ArrayAccess
         
         
         if ($data != null) {
-            $this->id = $data["id"];
-            $this->board = $data["board"];
-            $this->board_status = $data["board_status"];
-            $this->posting_instructions = $data["posting_instructions"];
+            $this->scheduled_at = $data["scheduled_at"];
+            $this->unpost_at = $data["unpost_at"];
         }
     }
     /**
-     * Gets id
-     * @return int
+     * Gets scheduled_at
+     * @return \DateTime
      */
-    public function getId()
+    public function getScheduledAt()
     {
-        return $this->id;
+        return $this->scheduled_at;
     }
   
     /**
-     * Sets id
-     * @param int $id 
+     * Sets scheduled_at
+     * @param \DateTime $scheduled_at Timestamp when posting is requested to be published. NULL for immediate delivery.
      * @return $this
      */
-    public function setId($id)
+    public function setScheduledAt($scheduled_at)
     {
         
-        $this->id = $id;
+        $this->scheduled_at = $scheduled_at;
         return $this;
     }
     /**
-     * Gets board
-     * @return \Swagger\Client\Model\Board
+     * Gets unpost_at
+     * @return \DateTime
      */
-    public function getBoard()
+    public function getUnpostAt()
     {
-        return $this->board;
+        return $this->unpost_at;
     }
   
     /**
-     * Sets board
-     * @param \Swagger\Client\Model\Board $board Board reference
+     * Sets unpost_at
+     * @param \DateTime $unpost_at Timestamp when posting is requested to be unposted from a board. NULL to let expire.
      * @return $this
      */
-    public function setBoard($board)
+    public function setUnpostAt($unpost_at)
     {
         
-        $this->board = $board;
-        return $this;
-    }
-    /**
-     * Gets board_status
-     * @return \Swagger\Client\Model\PostingBoardStatus
-     */
-    public function getBoardStatus()
-    {
-        return $this->board_status;
-    }
-  
-    /**
-     * Sets board_status
-     * @param \Swagger\Client\Model\PostingBoardStatus $board_status Read-only status of posting on a board
-     * @return $this
-     */
-    public function setBoardStatus($board_status)
-    {
-        
-        $this->board_status = $board_status;
-        return $this;
-    }
-    /**
-     * Gets posting_instructions
-     * @return \Swagger\Client\Model\PostingInstructions
-     */
-    public function getPostingInstructions()
-    {
-        return $this->posting_instructions;
-    }
-  
-    /**
-     * Sets posting_instructions
-     * @param \Swagger\Client\Model\PostingInstructions $posting_instructions Board delivery instructions
-     * @return $this
-     */
-    public function setPostingInstructions($posting_instructions)
-    {
-        
-        $this->posting_instructions = $posting_instructions;
+        $this->unpost_at = $unpost_at;
         return $this;
     }
     /**

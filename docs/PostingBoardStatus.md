@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**state** | **string** | queued|scheduled|posted|deferred|expired | [optional] 
-**queued_at** | [**\DateTime**](\DateTime.md) | Timestamp when posting was accepted by the system | [optional] 
+**state** | **string** | queued|scheduled|posted|deferred|expired | 
+**queued_at** | [**\DateTime**](\DateTime.md) | Timestamp when posting was accepted by the system | 
 **scheduled_at** | [**\DateTime**](\DateTime.md) | Timestamp when posting is requested to be published | [optional] 
 **posted_at** | [**\DateTime**](\DateTime.md) | Timestamp when posting was published on a board | [optional] 
 **expires_at** | [**\DateTime**](\DateTime.md) | Timestamp when posting expires on a board | [optional] 
