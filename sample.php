@@ -35,22 +35,24 @@ try {
     echo "--- Post job to first available board\n";
     $api->postDraft($draft->getId(), $postingsArray);
 
-    echo "--- Get data for posted job\n";
-    $jobs = $api->getJobs($draft->getRequisitionNumber());
-    foreach ($jobs as $job) {
-        printf(
-            " * %s\t%s\t%s\n",
-            $job->getId(),
-            $job->getRequisitionNumber(),
-            $job->getPosition()->getTitle()
-        );
-    }
-    // display posting details
-    echo "--- Get posting info\n";
-    $postings = $api->getJobPostings($jobs[0]->getId());
-    foreach ($postings as $posting) {
-        echo indent((string) $posting) . "\n";
-    }
+    $jobs = displayJobs($draft->getRequisitionNumber(), $api);
+
+    displayJobPostings($jobs[0], $api);
+
+    echo "--- Update job\n";
+    echo "---- Create draft\n";
+    $draft = $jobs[0];
+    // you have to reset link to reuse returned object
+    $draft->setLinks(null);
+    $draft->getPosition()->setTitle("Senior PHP Developer");
+    $draft = $api->createDraft($draft);
+    echo "---- Update on currently posted boards\n";
+    $api->postDraft($draft->getId());
+
+    $jobs = displayJobs($draft->getRequisitionNumber(), $api);
+
+    $postings = displayJobPostings($jobs[0], $api);
+
     echo "--- Delete posting\n";
     $api->deleteJobPosting($jobs[0]->getId(), $postings[0]->getId());
 
@@ -103,6 +105,40 @@ function composeDraft()
     $cr->setEmail("apply@example.com");
 
     return $draft;
+}
+
+/**
+ * @param string $requisition Optional filter. null to display all
+ * @param \Swagger\Client\Api\DefaultApi $api
+ * @return \Swagger\Client\Model\Job[]
+ */
+function displayJobs($requisition, \Swagger\Client\Api\DefaultApi $api) {
+    echo "--- Get data for posted job\n";
+    $jobs = $api->getJobs($requisition);
+    foreach ($jobs as $job) {
+        printf(
+            " * %s\t%s\t%s\n",
+            $job->getId(),
+            $job->getRequisitionNumber(),
+            $job->getPosition()->getTitle()
+        );
+    }
+    return $jobs;
+}
+
+/**
+ * @param \Swagger\Client\Model\Job $job
+ * @param \Swagger\Client\Api\DefaultApi $api
+ * @return \Swagger\Client\Model\Posting[]
+ */
+function displayJobPostings(\Swagger\Client\Model\Job $job, \Swagger\Client\Api\DefaultApi $api)
+{
+    echo "--- Get posting info\n";
+    $postings = $api->getJobPostings($job->getId());
+    foreach ($postings as $posting) {
+        echo indent((string)$posting) . "\n";
+    }
+    return $postings;
 }
 
 function listJobs(\Swagger\Client\Api\DefaultApi $api)
