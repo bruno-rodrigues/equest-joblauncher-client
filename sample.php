@@ -53,6 +53,15 @@ try {
 
     $postings = displayJobPostings($jobs[0], $api);
 
+    echo "--- Update posting istructions\n";
+    $draft = $jobs[0];
+    $draft->setLinks(null);
+    $postings[0]
+        ->getPostingInstructions()->setUnpostAt(null)->setScheduledAt(null);
+    $draft = $api->createDraft($draft);
+    $api->postDraft($draft->getId(), $postings);
+    $postings = displayJobPostings($jobs[0], $api);
+
     echo "--- Delete posting\n";
     $api->deleteJobPosting($jobs[0]->getId(), $postings[0]->getId());
 
