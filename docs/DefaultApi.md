@@ -27,6 +27,8 @@ Every time you want to change job data you have to create job draft first and th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: oauth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: http_basic
 Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
@@ -55,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[http_basic](../README.md#http_basic)
+[oauth](../README.md#oauth), [http_basic](../README.md#http_basic)
 
 ### HTTP request headers
 
@@ -74,6 +76,8 @@ Delete/unpost job and close it
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: oauth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: http_basic
 Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
@@ -101,7 +105,7 @@ void (empty response body)
 
 ### Authorization
 
-[http_basic](../README.md#http_basic)
+[oauth](../README.md#oauth), [http_basic](../README.md#http_basic)
 
 ### HTTP request headers
 
@@ -120,6 +124,8 @@ Delete/unpost job from specific board
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: oauth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: http_basic
 Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
@@ -149,7 +155,7 @@ void (empty response body)
 
 ### Authorization
 
-[http_basic](../README.md#http_basic)
+[oauth](../README.md#oauth), [http_basic](../README.md#http_basic)
 
 ### HTTP request headers
 
@@ -168,6 +174,8 @@ Returns boards available to post.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: oauth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: http_basic
 Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
@@ -192,7 +200,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[http_basic](../README.md#http_basic)
+[oauth](../README.md#oauth), [http_basic](../README.md#http_basic)
 
 ### HTTP request headers
 
@@ -213,6 +221,8 @@ this method is to test state of job draft after creating one. There is no real u
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: oauth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: http_basic
 Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
@@ -241,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[http_basic](../README.md#http_basic)
+[oauth](../README.md#oauth), [http_basic](../README.md#http_basic)
 
 ### HTTP request headers
 
@@ -260,6 +270,8 @@ Retrieve job data and status
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: oauth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: http_basic
 Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
@@ -288,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[http_basic](../README.md#http_basic)
+[oauth](../README.md#oauth), [http_basic](../README.md#http_basic)
 
 ### HTTP request headers
 
@@ -307,6 +319,8 @@ Returns job's status on boards
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: oauth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: http_basic
 Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
@@ -335,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[http_basic](../README.md#http_basic)
+[oauth](../README.md#oauth), [http_basic](../README.md#http_basic)
 
 ### HTTP request headers
 
@@ -354,6 +368,8 @@ Search customer's jobs
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: oauth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: http_basic
 Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
@@ -382,7 +398,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[http_basic](../README.md#http_basic)
+[oauth](../README.md#oauth), [http_basic](../README.md#http_basic)
 
 ### HTTP request headers
 
@@ -403,6 +419,8 @@ This is a second (final) step of job posting process where you specify which boa
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: oauth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: http_basic
 Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
@@ -432,7 +450,7 @@ void (empty response body)
 
 ### Authorization
 
-[http_basic](../README.md#http_basic)
+[oauth](../README.md#oauth), [http_basic](../README.md#http_basic)
 
 ### HTTP request headers
 
