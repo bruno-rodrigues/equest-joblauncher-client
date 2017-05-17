@@ -17,6 +17,8 @@ Change job data without changing board selection
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure OAuth2 access token for authorization: oauth
+Swagger\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 // Configure HTTP basic authorization: http_basic
 Swagger\Client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
 Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
@@ -44,7 +46,7 @@ void (empty response body)
 
 ### Authorization
 
-[http_basic](../README.md#http_basic)
+[oauth](../README.md#oauth), [http_basic](../README.md#http_basic)
 
 ### HTTP request headers
 
