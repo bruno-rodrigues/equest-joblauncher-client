@@ -1,3 +1,5 @@
 {
-    "packagePath": "."
+    "packagePath": ".",
+    "composerProjectName": "joblauncher-client-php",
+    "composerVendorName": "equest"
 }
