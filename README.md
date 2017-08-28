@@ -1,11 +1,10 @@
-# SwaggerClient-php
-## Intro\n**This API is currently in development and should not be used in production or relied upon.**\n \nEvery request requires  [HTTP Basic Authentication](ttps://en.wikipedia.org/wiki/Basic_access_authentication\">HTTP Basic Authentication)   with regular posting account that should \"own\" the job. Content-Type and Accept headers should be respected by API in all cases. It's highly recommended to pass User-Agent header with a string identifying your ATS to keep track of API users and have a way for eQuest to contact you.\n## Basic usage\n \nJob posting process in eQuest generally consists of at 2 steps - passing  job data (e.g. job title, description) followed by board selection, referred  as \"posting\" in eQuest system (e.g. Monster.com, Craigslist).</p>\n \nSince job in eQuest can't be stored without postings and we don't want to combine all information in one request, there is no way to create job directly. You have to create job draft first using /draft entity and then pass postings information. When request is completed we create job entity. You can use it to  change board selection using appropriate methods on /job/{id}/postings endpoint or DELETE job.\n## Versioning\nThis API will evolve with time. Request/response format will change. As a result it's mandatory to stick to specific version at the development time and upgrade down the road. This document will always refer to latest version. You can find it at the bottom of the page.\n \nVersion support is implemented through X-Accept-Version header. In generated clients search for a method like `addDefaultHeader` and call it when you configure client. In general make sure that every call to the API (both POST and GET) contains version header. You can find current version at the bottom of this page.\n \n## Experimenting using cURL\nMost API methods provide sample request data in both XML and JSON that can be used for experiments. Simply download request file, adjust if necessary and run command below. Note, you have to adjust endpoint domain and URL, authentication credentials content type and path to a file, which must start with @ to use with cURL.\n \n``` curl -i -H 'Content-type: application/json' -H 'Accept: application/json' -u 'USER:PASS' -d @PATH_TO_FILE     http://joblauncher.ZONE.equest.com/api/drafts ```\n\n Some responses contain links in [Hypertex Application Language](http://stateless.co/hal_specification.html) format for JSON and [Atom Links](http://tools.ietf.org/search/rfc4287#section-4.2.7) for XML, but they are not documented in Swagger specification\n
+# .
+## Intro **This API is currently in development and should not be used in production or relied upon.**   Every request requires  [HTTP Basic Authentication](ttps://en.wikipedia.org/wiki/Basic_access_authentication\">HTTP Basic Authentication)   with regular posting account that should \"own\" the job. Content-Type and Accept headers should be respected by API in all cases. It's highly recommended to pass User-Agent header with a string identifying your ATS to keep track of API users and have a way for eQuest to contact you. ## Basic usage   Job posting process in eQuest generally consists of at 2 steps - passing  job data (e.g. job title, description) followed by board selection, referred  as \"posting\" in eQuest system (e.g. Monster.com, Craigslist).</p>   Since job in eQuest can't be stored without postings and we don't want to combine all information in one request, there is no way to create job directly. You have to create job draft first using /draft entity and then pass postings information. When request is completed we create job entity. You can use it to  change board selection using appropriate methods on /job/{id}/postings endpoint or DELETE job. ## Versioning This API will evolve with time. Request/response format will change. As a result it's mandatory to stick to specific version at the development time and upgrade down the road. This document will always refer to latest version. You can find it at the bottom of the page.   Version support is implemented through X-Accept-Version header. In generated clients search for a method like `addDefaultHeader` and call it when you configure client. In general make sure that every call to the API (both POST and GET) contains version header. You can find current version at the bottom of this page.   ## Experimenting using cURL Most API methods provide sample request data in both XML and JSON that can be used for experiments. Simply download request file, adjust if necessary and run command below. Note, you have to adjust endpoint domain and URL, authentication credentials content type and path to a file, which must start with @ to use with cURL.   ``` curl -i -H 'Content-type: application/json' -H 'Accept: application/json' -u 'USER:PASS' -d @PATH_TO_FILE     http://joblauncher.ZONE.equest.com/api/drafts ```   Some responses contain links in [Hypertex Application Language](http://stateless.co/hal_specification.html) format for JSON and [Atom Links](http://tools.ietf.org/search/rfc4287#section-4.2.7) for XML, but they are not documented in Swagger specification
 
 This PHP package is automatically generated by the [Swagger Codegen](https://github.com/swagger-api/swagger-codegen) project:
 
-- API version: 1.1
-- Package version: 1.0.0
-- Build date: 2017-05-17T19:12:44.658Z
+- API version: 1.2
+- Build date: 2017-08-28T09:45:29.829Z
 - Build package: class io.swagger.codegen.languages.PhpClientCodegen
 
 ## Requirements
@@ -22,11 +21,11 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/YOUR_GIT_USR_ID/YOUR_GIT_REPO_ID.git"
+      "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
     }
   ],
   "require": {
-    "YOUR_GIT_USR_ID/YOUR_GIT_REPO_ID": "*@dev"
+    "GIT_USER_ID/GIT_REPO_ID": "*@dev"
   }
 }
 ```
@@ -38,10 +37,10 @@ Then run `composer install`
 Download the files and include `autoload.php`:
 
 ```php
-    require_once('/path/to/SwaggerClient-php/autoload.php');
+    require_once('/path/to/./autoload.php');
 ```
 
-## Tests 
+## Tests
 
 To run the unit tests:
 
@@ -71,7 +70,7 @@ try {
     $result = $api_instance->createDraft($draft);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->createDraft: ', $e->getMessage(), "\n";
+    echo 'Exception when calling DefaultApi->createDraft: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -83,35 +82,36 @@ All URIs are relative to *https://localhost/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**createDraft**](docs/DefaultApi.md#createdraft) | **POST** /drafts | Create a job draft for posting to boards
-*DefaultApi* | [**deleteJob**](docs/DefaultApi.md#deletejob) | **DELETE** /jobs/{job_id} | Delete/unpost job and close it
-*DefaultApi* | [**deleteJobPosting**](docs/DefaultApi.md#deletejobposting) | **DELETE** /jobs/{job_id}/postings/{posting_id} | Delete/unpost job from specific board
-*DefaultApi* | [**getBoards**](docs/DefaultApi.md#getboards) | **GET** /boards | Returns boards available to post.
-*DefaultApi* | [**getDraft**](docs/DefaultApi.md#getdraft) | **GET** /drafts/{draft_id} | Get Job Draft Data
-*DefaultApi* | [**getJob**](docs/DefaultApi.md#getjob) | **GET** /jobs/{job_id} | Retrieve job data and status
-*DefaultApi* | [**getJobPostings**](docs/DefaultApi.md#getjobpostings) | **GET** /jobs/{job_id}/postings | Returns job&#39;s status on boards
-*DefaultApi* | [**getJobs**](docs/DefaultApi.md#getjobs) | **GET** /jobs | Search customer&#39;s jobs
-*DefaultApi* | [**postDraft**](docs/DefaultApi.md#postdraft) | **POST** /drafts/{draft_id}/postings | Post job draft to specified boards
-*StubApi* | [**updateJob**](docs/StubApi.md#updatejob) | **PATCH** /jobs/{job_id} | Change job data without changing board selection
+*DefaultApi* | [**createDraft**](docs/Api/DefaultApi.md#createdraft) | **POST** /drafts | Create a job draft for posting to boards
+*DefaultApi* | [**deleteJob**](docs/Api/DefaultApi.md#deletejob) | **DELETE** /jobs/{job_id} | Delete/unpost job and close it
+*DefaultApi* | [**deleteJobPosting**](docs/Api/DefaultApi.md#deletejobposting) | **DELETE** /jobs/{job_id}/postings/{posting_id} | Delete/unpost job from specific board
+*DefaultApi* | [**getBoards**](docs/Api/DefaultApi.md#getboards) | **GET** /boards | Returns boards available to post.
+*DefaultApi* | [**getDraft**](docs/Api/DefaultApi.md#getdraft) | **GET** /drafts/{draft_id} | Get Job Draft Data
+*DefaultApi* | [**getDraftBsdUrl**](docs/Api/DefaultApi.md#getdraftbsdurl) | **GET** /drafts/{draft_id}/bsd | Get Board Specific Data page URL for job draft
+*DefaultApi* | [**getJob**](docs/Api/DefaultApi.md#getjob) | **GET** /jobs/{job_id} | Retrieve job data and status
+*DefaultApi* | [**getJobPostings**](docs/Api/DefaultApi.md#getjobpostings) | **GET** /jobs/{job_id}/postings | Returns job&#39;s status on boards
+*DefaultApi* | [**getJobs**](docs/Api/DefaultApi.md#getjobs) | **GET** /jobs | Search customer&#39;s jobs
+*DefaultApi* | [**postDraft**](docs/Api/DefaultApi.md#postdraft) | **POST** /drafts/{draft_id}/postings | Post job draft to specified boards
+*StubApi* | [**updateJob**](docs/Api/StubApi.md#updatejob) | **PATCH** /jobs/{job_id} | Change job data without changing board selection
 
 
 ## Documentation For Models
 
- - [Account](docs/Account.md)
- - [Board](docs/Board.md)
- - [CandidateResponse](docs/CandidateResponse.md)
- - [Classification](docs/Classification.md)
- - [Company](docs/Company.md)
- - [Compensation](docs/Compensation.md)
- - [Draft](docs/Draft.md)
- - [ErrorMessage](docs/ErrorMessage.md)
- - [Job](docs/Job.md)
- - [Location](docs/Location.md)
- - [Position](docs/Position.md)
- - [Posting](docs/Posting.md)
- - [PostingBoardStatus](docs/PostingBoardStatus.md)
- - [PostingInstructions](docs/PostingInstructions.md)
- - [Range](docs/Range.md)
+ - [Account](docs/Model/Account.md)
+ - [Board](docs/Model/Board.md)
+ - [CandidateResponse](docs/Model/CandidateResponse.md)
+ - [Classification](docs/Model/Classification.md)
+ - [Company](docs/Model/Company.md)
+ - [Compensation](docs/Model/Compensation.md)
+ - [Draft](docs/Model/Draft.md)
+ - [ErrorMessage](docs/Model/ErrorMessage.md)
+ - [Job](docs/Model/Job.md)
+ - [Location](docs/Model/Location.md)
+ - [Position](docs/Model/Position.md)
+ - [Posting](docs/Model/Posting.md)
+ - [PostingBoardStatus](docs/Model/PostingBoardStatus.md)
+ - [PostingInstructions](docs/Model/PostingInstructions.md)
+ - [Range](docs/Model/Range.md)
 
 
 ## Documentation For Authorization

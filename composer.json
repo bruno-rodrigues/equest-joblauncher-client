@@ -1,5 +1,5 @@
 {
-    "name": "equest/joblauncher-client-php",
+    "name": "GIT_USER_ID/GIT_REPO_ID",
     "description": "",
     "keywords": [
         "swagger",
@@ -28,5 +28,8 @@
     },
     "autoload": {
         "psr-4": { "Swagger\\Client\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Swagger\\Client\\" : "test/" }
     }
 }
