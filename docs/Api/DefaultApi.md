@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 Get Board Specific Data page URL for job draft
 
-When you want to pass some specific data to boards, you may get temporary interactive BSD page URL using this call and redirect customer to it before posting to boards.   Required GET parameters are plural boards[] that should contain board id and return_url to redirect customer after they fill and submit board specific data.
+Allows to retrieve URL to eQuest page that collects board specific data for requested boards and returns customer back afterwards. Required GET parameters are plural boards[] with list of board IDs from GET /boards method and return_url to redirect customer after they fill and submit board specific data.
 
 ### Example
 ```php
