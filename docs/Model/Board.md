@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
+**bsd_required** | **bool** |  | [optional] 
 **media_type** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 **pipeline_id** | **string** |  | [optional] 
