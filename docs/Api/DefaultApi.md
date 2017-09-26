@@ -166,7 +166,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getBoards**
-> \Swagger\Client\Model\Board[] getBoards()
+> \Swagger\Client\Model\BoardSelector[] getBoards()
 
 Returns boards available to post.
 
@@ -197,7 +197,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\Board[]**](../Model/Board.md)
+[**\Swagger\Client\Model\BoardSelector[]**](../Model/BoardSelector.md)
 
 ### Authorization
 

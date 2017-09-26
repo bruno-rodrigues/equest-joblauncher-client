@@ -1,6 +1,6 @@
 <?php
 /**
- * Compensation
+ * Inventory
  *
  * PHP version 5
  *
@@ -44,7 +44,7 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Compensation Class Doc Comment
+ * Inventory Class Doc Comment
  *
  * @category    Class */
 /** 
@@ -53,22 +53,21 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Compensation implements ArrayAccess
+class Inventory implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Compensation';
+    protected static $swaggerModelName = 'Inventory';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'range' => '\Swagger\Client\Model\Range',
         'type' => 'string',
-        'currency' => 'string'
+        'transactions_remain' => 'int'
     );
 
     public static function swaggerTypes()
@@ -81,9 +80,8 @@ class Compensation implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'range' => 'range',
         'type' => 'type',
-        'currency' => 'currency'
+        'transactions_remain' => 'transactions_remain'
     );
 
     public static function attributeMap()
@@ -96,9 +94,8 @@ class Compensation implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'range' => 'setRange',
         'type' => 'setType',
-        'currency' => 'setCurrency'
+        'transactions_remain' => 'setTransactionsRemain'
     );
 
     public static function setters()
@@ -111,9 +108,8 @@ class Compensation implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'range' => 'getRange',
         'type' => 'getType',
-        'currency' => 'getCurrency'
+        'transactions_remain' => 'getTransactionsRemain'
     );
 
     public static function getters()
@@ -121,8 +117,22 @@ class Compensation implements ArrayAccess
         return self::$getters;
     }
 
+    const TYPE_REGULAR = 'REGULAR';
+    const TYPE_SLOTS = 'SLOTS';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_REGULAR,
+            self::TYPE_SLOTS,
+        ];
+    }
     
 
     /**
@@ -137,9 +147,8 @@ class Compensation implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['range'] = isset($data['range']) ? $data['range'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        $this->container['transactions_remain'] = isset($data['transactions_remain']) ? $data['transactions_remain'] : null;
     }
 
     /**
@@ -150,6 +159,11 @@ class Compensation implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = array();
+        $allowed_values = array("REGULAR", "SLOTS");
+        if (!in_array($this->container['type'], $allowed_values)) {
+            $invalid_properties[] = "invalid value for 'type', must be one of #{allowed_values}.";
+        }
+
         return $invalid_properties;
     }
 
@@ -161,30 +175,13 @@ class Compensation implements ArrayAccess
      */
     public function valid()
     {
+        $allowed_values = array("REGULAR", "SLOTS");
+        if (!in_array($this->container['type'], $allowed_values)) {
+            return false;
+        }
         return true;
     }
 
-
-    /**
-     * Gets range
-     * @return \Swagger\Client\Model\Range
-     */
-    public function getRange()
-    {
-        return $this->container['range'];
-    }
-
-    /**
-     * Sets range
-     * @param \Swagger\Client\Model\Range $range
-     * @return $this
-     */
-    public function setRange($range)
-    {
-        $this->container['range'] = $range;
-
-        return $this;
-    }
 
     /**
      * Gets type
@@ -202,28 +199,32 @@ class Compensation implements ArrayAccess
      */
     public function setType($type)
     {
+        $allowed_values = array('REGULAR', 'SLOTS');
+        if (!in_array($type, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'REGULAR', 'SLOTS'");
+        }
         $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets currency
-     * @return string
+     * Gets transactions_remain
+     * @return int
      */
-    public function getCurrency()
+    public function getTransactionsRemain()
     {
-        return $this->container['currency'];
+        return $this->container['transactions_remain'];
     }
 
     /**
-     * Sets currency
-     * @param string $currency
+     * Sets transactions_remain
+     * @param int $transactions_remain
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setTransactionsRemain($transactions_remain)
     {
-        $this->container['currency'] = $currency;
+        $this->container['transactions_remain'] = $transactions_remain;
 
         return $this;
     }

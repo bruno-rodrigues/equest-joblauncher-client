@@ -1,6 +1,6 @@
 <?php
 /**
- * Compensation
+ * BoardSelector
  *
  * PHP version 5
  *
@@ -44,7 +44,7 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Compensation Class Doc Comment
+ * BoardSelector Class Doc Comment
  *
  * @category    Class */
 /** 
@@ -53,27 +53,25 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Compensation implements ArrayAccess
+class BoardSelector extends Board implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Compensation';
+    protected static $swaggerModelName = 'BoardSelector';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'range' => '\Swagger\Client\Model\Range',
-        'type' => 'string',
-        'currency' => 'string'
+        'inventory' => '\Swagger\Client\Model\Inventory'
     );
 
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes;
+        return self::$swaggerTypes + parent::swaggerTypes();
     }
 
     /**
@@ -81,14 +79,12 @@ class Compensation implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'range' => 'range',
-        'type' => 'type',
-        'currency' => 'currency'
+        'inventory' => 'inventory'
     );
 
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -96,14 +92,12 @@ class Compensation implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'range' => 'setRange',
-        'type' => 'setType',
-        'currency' => 'setCurrency'
+        'inventory' => 'setInventory'
     );
 
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -111,14 +105,12 @@ class Compensation implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'range' => 'getRange',
-        'type' => 'getType',
-        'currency' => 'getCurrency'
+        'inventory' => 'getInventory'
     );
 
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     
@@ -137,9 +129,9 @@ class Compensation implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['range'] = isset($data['range']) ? $data['range'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
+        parent::__construct($data);
+
+        $this->container['inventory'] = isset($data['inventory']) ? $data['inventory'] : null;
     }
 
     /**
@@ -166,64 +158,22 @@ class Compensation implements ArrayAccess
 
 
     /**
-     * Gets range
-     * @return \Swagger\Client\Model\Range
+     * Gets inventory
+     * @return \Swagger\Client\Model\Inventory
      */
-    public function getRange()
+    public function getInventory()
     {
-        return $this->container['range'];
+        return $this->container['inventory'];
     }
 
     /**
-     * Sets range
-     * @param \Swagger\Client\Model\Range $range
+     * Sets inventory
+     * @param \Swagger\Client\Model\Inventory $inventory
      * @return $this
      */
-    public function setRange($range)
+    public function setInventory($inventory)
     {
-        $this->container['range'] = $range;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     * @param string $type
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     * @return string
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     * @param string $currency
-     * @return $this
-     */
-    public function setCurrency($currency)
-    {
-        $this->container['currency'] = $currency;
+        $this->container['inventory'] = $inventory;
 
         return $this;
     }
