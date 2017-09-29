@@ -3,7 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**board_type** | **string** |  | [optional] 
 **id** | **int** |  | [optional] 
 **bsd_required** | **bool** |  | [optional] 
 **media_type** | **string** |  | [optional] 

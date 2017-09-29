@@ -53,7 +53,7 @@ use \ArrayAccess;
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Draft implements ArrayAccess
+class Draft extends Job implements ArrayAccess
 {
     /**
       * The original name of the model.
@@ -71,7 +71,7 @@ class Draft implements ArrayAccess
 
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes;
+        return self::$swaggerTypes + parent::swaggerTypes();
     }
 
     /**
@@ -84,7 +84,7 @@ class Draft implements ArrayAccess
 
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -97,7 +97,7 @@ class Draft implements ArrayAccess
 
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -110,7 +110,7 @@ class Draft implements ArrayAccess
 
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     
@@ -129,6 +129,8 @@ class Draft implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        parent::__construct($data);
+
         $this->container['return_url'] = isset($data['return_url']) ? $data['return_url'] : null;
     }
 

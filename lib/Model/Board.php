@@ -66,7 +66,6 @@ class Board implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'board_type' => 'string',
         'id' => 'int',
         'bsd_required' => 'bool',
         'media_type' => 'string',
@@ -84,7 +83,6 @@ class Board implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'board_type' => 'board_type',
         'id' => 'id',
         'bsd_required' => 'bsd_required',
         'media_type' => 'media_type',
@@ -102,7 +100,6 @@ class Board implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'board_type' => 'setBoardType',
         'id' => 'setId',
         'bsd_required' => 'setBsdRequired',
         'media_type' => 'setMediaType',
@@ -120,7 +117,6 @@ class Board implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'board_type' => 'getBoardType',
         'id' => 'getId',
         'bsd_required' => 'getBsdRequired',
         'media_type' => 'getMediaType',
@@ -163,7 +159,6 @@ class Board implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['board_type'] = isset($data['board_type']) ? $data['board_type'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['bsd_required'] = isset($data['bsd_required']) ? $data['bsd_required'] : null;
         $this->container['media_type'] = isset($data['media_type']) ? $data['media_type'] : null;
@@ -206,27 +201,6 @@ class Board implements ArrayAccess
         return true;
     }
 
-
-    /**
-     * Gets board_type
-     * @return string
-     */
-    public function getBoardType()
-    {
-        return $this->container['board_type'];
-    }
-
-    /**
-     * Sets board_type
-     * @param string $board_type
-     * @return $this
-     */
-    public function setBoardType($board_type)
-    {
-        $this->container['board_type'] = $board_type;
-
-        return $this;
-    }
 
     /**
      * Gets id

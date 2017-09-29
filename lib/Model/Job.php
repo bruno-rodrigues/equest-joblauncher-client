@@ -156,6 +156,10 @@ class Job implements ArrayAccess
         $this->container['company'] = isset($data['company']) ? $data['company'] : null;
         $this->container['candidate_response'] = isset($data['candidate_response']) ? $data['candidate_response'] : null;
         $this->container['_links'] = isset($data['_links']) ? $data['_links'] : null;
+
+        // Initialize discriminator property with the model name.
+        $discrimintor = array_search('job_type', self::$attributeMap);
+        $this->container[$discrimintor] = static::$swaggerModelName;
     }
 
     /**
