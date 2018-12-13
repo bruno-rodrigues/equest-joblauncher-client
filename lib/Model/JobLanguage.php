@@ -1,6 +1,6 @@
 <?php
 /**
- * Job
+ * JobLanguage
  *
  * PHP version 5
  *
@@ -44,37 +44,32 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Job Class Doc Comment
+ * JobLanguage Class Doc Comment
  *
  * @category    Class */
- // @description See Job/Draft parameter description at https://support.equest.com/index.php?pg&#x3D;kb.page&amp;id&#x3D;224
 /** 
  * @package     Swagger\Client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Job implements ArrayAccess
+class JobLanguage implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Job';
+    protected static $swaggerModelName = 'JobLanguage';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'id' => 'int',
-        'requisition_number' => 'string',
+        'code' => 'string',
         'position' => '\Swagger\Client\Model\Position',
         'company' => '\Swagger\Client\Model\Company',
-        'candidate_response' => '\Swagger\Client\Model\CandidateResponse',
-        'language' => 'string',
-        'additional_languages' => '\Swagger\Client\Model\JobLanguage[]',
-        '_links' => 'object'
+        'candidate_response' => '\Swagger\Client\Model\CandidateResponse'
     );
 
     public static function swaggerTypes()
@@ -87,14 +82,10 @@ class Job implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'id' => 'id',
-        'requisition_number' => 'requisition_number',
+        'code' => 'code',
         'position' => 'position',
         'company' => 'company',
-        'candidate_response' => 'candidate_response',
-        'language' => 'language',
-        'additional_languages' => 'additional_languages',
-        '_links' => '_links'
+        'candidate_response' => 'candidate_response'
     );
 
     public static function attributeMap()
@@ -107,14 +98,10 @@ class Job implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'id' => 'setId',
-        'requisition_number' => 'setRequisitionNumber',
+        'code' => 'setCode',
         'position' => 'setPosition',
         'company' => 'setCompany',
-        'candidate_response' => 'setCandidateResponse',
-        'language' => 'setLanguage',
-        'additional_languages' => 'setAdditionalLanguages',
-        '_links' => 'setLinks'
+        'candidate_response' => 'setCandidateResponse'
     );
 
     public static function setters()
@@ -127,14 +114,10 @@ class Job implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'id' => 'getId',
-        'requisition_number' => 'getRequisitionNumber',
+        'code' => 'getCode',
         'position' => 'getPosition',
         'company' => 'getCompany',
-        'candidate_response' => 'getCandidateResponse',
-        'language' => 'getLanguage',
-        'additional_languages' => 'getAdditionalLanguages',
-        '_links' => 'getLinks'
+        'candidate_response' => 'getCandidateResponse'
     );
 
     public static function getters()
@@ -158,18 +141,10 @@ class Job implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['requisition_number'] = isset($data['requisition_number']) ? $data['requisition_number'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['position'] = isset($data['position']) ? $data['position'] : null;
         $this->container['company'] = isset($data['company']) ? $data['company'] : null;
         $this->container['candidate_response'] = isset($data['candidate_response']) ? $data['candidate_response'] : null;
-        $this->container['language'] = isset($data['language']) ? $data['language'] : null;
-        $this->container['additional_languages'] = isset($data['additional_languages']) ? $data['additional_languages'] : null;
-        $this->container['_links'] = isset($data['_links']) ? $data['_links'] : null;
-
-        // Initialize discriminator property with the model name.
-        $discrimintor = array_search('job_type', self::$attributeMap);
-        $this->container[$discrimintor] = static::$swaggerModelName;
     }
 
     /**
@@ -180,18 +155,6 @@ class Job implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = array();
-        if ($this->container['requisition_number'] === null) {
-            $invalid_properties[] = "'requisition_number' can't be null";
-        }
-        if ($this->container['position'] === null) {
-            $invalid_properties[] = "'position' can't be null";
-        }
-        if ($this->container['company'] === null) {
-            $invalid_properties[] = "'company' can't be null";
-        }
-        if ($this->container['candidate_response'] === null) {
-            $invalid_properties[] = "'candidate_response' can't be null";
-        }
         return $invalid_properties;
     }
 
@@ -203,60 +166,27 @@ class Job implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['requisition_number'] === null) {
-            return false;
-        }
-        if ($this->container['position'] === null) {
-            return false;
-        }
-        if ($this->container['company'] === null) {
-            return false;
-        }
-        if ($this->container['candidate_response'] === null) {
-            return false;
-        }
         return true;
     }
 
 
     /**
-     * Gets id
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     * @param int $id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets requisition_number
+     * Gets code
      * @return string
      */
-    public function getRequisitionNumber()
+    public function getCode()
     {
-        return $this->container['requisition_number'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets requisition_number
-     * @param string $requisition_number
+     * Sets code
+     * @param string $code
      * @return $this
      */
-    public function setRequisitionNumber($requisition_number)
+    public function setCode($code)
     {
-        $this->container['requisition_number'] = $requisition_number;
+        $this->container['code'] = $code;
 
         return $this;
     }
@@ -320,69 +250,6 @@ class Job implements ArrayAccess
     public function setCandidateResponse($candidate_response)
     {
         $this->container['candidate_response'] = $candidate_response;
-
-        return $this;
-    }
-
-    /**
-     * Gets language
-     * @return string
-     */
-    public function getLanguage()
-    {
-        return $this->container['language'];
-    }
-
-    /**
-     * Sets language
-     * @param string $language
-     * @return $this
-     */
-    public function setLanguage($language)
-    {
-        $this->container['language'] = $language;
-
-        return $this;
-    }
-
-    /**
-     * Gets additional_languages
-     * @return \Swagger\Client\Model\JobLanguage[]
-     */
-    public function getAdditionalLanguages()
-    {
-        return $this->container['additional_languages'];
-    }
-
-    /**
-     * Sets additional_languages
-     * @param \Swagger\Client\Model\JobLanguage[] $additional_languages
-     * @return $this
-     */
-    public function setAdditionalLanguages($additional_languages)
-    {
-        $this->container['additional_languages'] = $additional_languages;
-
-        return $this;
-    }
-
-    /**
-     * Gets _links
-     * @return object
-     */
-    public function getLinks()
-    {
-        return $this->container['_links'];
-    }
-
-    /**
-     * Sets _links
-     * @param object $_links Dictionary of related links
-     * @return $this
-     */
-    public function setLinks($_links)
-    {
-        $this->container['_links'] = $_links;
 
         return $this;
     }
