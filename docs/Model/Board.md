@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
+**id** | **int** |  | 
 **bsd_required** | **bool** |  | [optional] 
 **media_type** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
