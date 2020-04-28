@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
+**state** | **string** |  | [optional] 
 **requisition_number** | **string** |  | 
 **position** | [**\Swagger\Client\Model\Position**](Position.md) |  | 
 **company** | [**\Swagger\Client\Model\Company**](Company.md) |  | 

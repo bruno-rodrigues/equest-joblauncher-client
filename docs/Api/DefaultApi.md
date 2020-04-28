@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getJobPostings**
-> \Swagger\Client\Model\Posting[] getJobPostings($job_id)
+> \Swagger\Client\Model\Posting[] getJobPostings($job_id, $include_deleted)
 
 Returns job's status on boards
 
@@ -383,9 +383,10 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSW
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
 $job_id = 789; // int | Job ID
+$include_deleted = false; // bool | Include Deleted
 
 try {
-    $result = $api_instance->getJobPostings($job_id);
+    $result = $api_instance->getJobPostings($job_id, $include_deleted);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getJobPostings: ', $e->getMessage(), PHP_EOL;
@@ -398,6 +399,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id** | **int**| Job ID |
+ **include_deleted** | **bool**| Include Deleted | [optional] [default to false]
 
 ### Return type
 
@@ -415,7 +417,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getJobs**
-> \Swagger\Client\Model\Job[] getJobs($requisition_number)
+> \Swagger\Client\Model\Job[] getJobs($requisition_number, $include_deleted)
 
 Search customer's jobs
 
@@ -432,9 +434,10 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSW
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
 $requisition_number = "requisition_number_example"; // string | Requisition Number
+$include_deleted = false; // bool | Include Deleted
 
 try {
-    $result = $api_instance->getJobs($requisition_number);
+    $result = $api_instance->getJobs($requisition_number, $include_deleted);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getJobs: ', $e->getMessage(), PHP_EOL;
@@ -447,6 +450,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requisition_number** | **string**| Requisition Number | [optional]
+ **include_deleted** | **bool**| Include Deleted | [optional] [default to false]
 
 ### Return type
 
