@@ -26,6 +26,10 @@ try {
         echo " * {$board->getName()}\n";
     }
 
+    echo "--- Get Board Specific Data page URL for first available board\n";
+    $bsdUrl = $api->getDraftBsdUrl($draft->getId(), [$boards[0]], 'http://example.com/after-bsd');
+    echo "BSD page URL: {$bsdUrl}\n";
+
     echo "--- Post job to first available board\n";
     $postingsArray = [
         (new \Swagger\Client\Model\Posting())->setBoard($boards[0])
