@@ -18,12 +18,15 @@ try {
     $draft = composeDraft();
     $draft = $api->createDraft($draft);
     echo "ID - {$draft->getId()}\n";
+
     echo "--- Get boards\n";
     $boards = $api->getBoards();
     $postingsArray = [];
     foreach ($boards as $board) {
         echo " * {$board->getName()}\n";
     }
+
+    echo "--- Post job to first available board\n";
     $postingsArray = [
         (new \Swagger\Client\Model\Posting())->setBoard($boards[0])
             ->setPostingInstructions(
@@ -32,7 +35,6 @@ try {
                     ->setUnpostAt(new \DateTime("+ 2 day"))
             )
     ];
-    echo "--- Post job to first available board\n";
     $api->postDraft($draft->getId(), $postingsArray);
 
     $jobs = displayJobs($draft->getRequisitionNumber(), $api);
@@ -46,6 +48,7 @@ try {
     $draft->setLinks(null);
     $draft->getPosition()->setTitle("Senior PHP Developer");
     $draft = $api->createDraft($draft);
+    echo "ID - {$draft->getId()}\n";
     echo "---- Update on currently posted boards\n";
     $api->postDraft($draft->getId());
 
@@ -53,7 +56,7 @@ try {
 
     $postings = displayJobPostings($jobs[0], $api);
 
-    echo "--- Update posting istructions\n";
+    echo "--- Update posting instructions\n";
     $draft = $jobs[0];
     $draft->setLinks(null);
     $postings[0]
@@ -76,11 +79,13 @@ function composeDraft()
 {
     $draft = new \Swagger\Client\Model\Job();
     $draft->setRequisitionNumber(uniqid("api-client"));
+
     $position = new \Swagger\Client\Model\Position();
     $position->setTitle("PHP Developer");
     $position->setDescription("Super Developer");
     $position->setSkills("PHP, MySQL");
     $position->setBenefits("Medical insurance covered");
+
     $compensation = new \Swagger\Client\Model\Compensation();
     $range = new \Swagger\Client\Model\Range();
     $range->setMin(40000);
@@ -89,12 +94,14 @@ function composeDraft()
     $compensation->setType("SALARY");
     $compensation->setCurrency("EUR");
     $position->setCompensation($compensation);
+
     $location = new \Swagger\Client\Model\Location();
     $location->setCountry("BY");
     $location->setState("BY-MI");
     $location->setCity("Minsk");
     $location->setZip("220012");
     $position->setLocation($location);
+
     $position->setTravelPercentage("0");
     $position->setTelecommutePercentage("0");
     $classification = new \Swagger\Client\Model\Classification();
@@ -103,6 +110,7 @@ function composeDraft()
     $classification->setFunction("15000000");
     $classification->setIndustry(11);
     $position->setClassification($classification);
+
     $draft->setPosition($position);
     $draft->setCompany($company = new \Swagger\Client\Model\Company());
 //    $company->setAccount($account = new \Swagger\Client\Model\Account());
@@ -110,6 +118,7 @@ function composeDraft()
 //    $account->setEmail("recruiter@example.com");
 //    $account->setOrganization("Recruiter Org");
     $draft->setCandidateResponse($cr = new \Swagger\Client\Model\CandidateResponse());
+
     $cr->setUrl("http://example.com/apply");
     $cr->setEmail("apply@example.com");
 
