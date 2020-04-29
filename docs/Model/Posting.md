@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
+**state** | **string** |  | [optional] 
 **board** | [**\Swagger\Client\Model\Board**](Board.md) | Board reference | 
 **board_status** | [**\Swagger\Client\Model\PostingBoardStatus**](PostingBoardStatus.md) | Read-only status of posting on a board | [optional] 
 **language** | **string** |  | [optional] 
