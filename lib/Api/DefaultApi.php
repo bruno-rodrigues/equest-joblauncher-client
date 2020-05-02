@@ -602,13 +602,10 @@ class DefaultApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json','text/xml'));
 
-        // query params
-        if (is_array($boards)) {
-            $boards = $this->apiClient->getSerializer()->serializeCollection($boards, 'multi', true);
-        }
         if ($boards !== null) {
-            $queryParams['boards[]'] = $this->apiClient->getSerializer()->toQueryValue($boards);
+            $queryParams['boards'] = $boards;
         }
+
         // query params
         if ($return_url !== null) {
             $queryParams['return_url'] = $this->apiClient->getSerializer()->toQueryValue($return_url);
